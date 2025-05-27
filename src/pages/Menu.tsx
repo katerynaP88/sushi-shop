@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchSushiData } from "../api/meals";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
     const [meals, setMeals] = useState<any[]>([]);
@@ -69,24 +70,25 @@ const Menu = () => {
                 }}
             >
                 {filteredMeals.map((meal) => (
-                    <div
-                      key={meal.idMeal}
-                      style={{
-                        border: "1px solid #ccc",
-                        borderRadius: "10px",
-                        padding: "1rem",
-                        backgroundColor: "#f8f8f8"
+                    <Link to={`/product/${meal.idMeal}`} key={meal.idMeal} style={{ textDecoration: "none", color: "inherit"}}>
+                        <div
+                          style={{
+                            border: "1px solid #ccc",
+                            borderRadius: "10px",
+                            padding: "1rem",
+                            width: "200px",
 
-                      }}
-                    >
-                      <img
-                        src={meal.strMealThumb}
-                        alt={meal.strMeal}
-                        style={{ width: "100%", borderRadius: "8px" }}
-                      />
-                      <h3>{meal.strMeal}</h3>
-                      <p><strong>Category:</strong> {meal.strCategory}</p>
-                    </div>
+                          }}
+                        >
+                          <img
+                            src={meal.strMealThumb}
+                            alt={meal.strMeal}
+                            style={{ width: "100%", borderRadius: "8px" }}
+                          />
+                          <h3>{meal.strMeal}</h3>
+                          <p><strong>Category:</strong> {meal.strCategory}</p>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
