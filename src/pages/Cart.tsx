@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 
 
 const Cart = () => {
-    const { cart, removeFromCart, updateQuantity } = useCart();
+    const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
+
+    const totalPrice = cart.items.reduce(
+        (sum, item) => sum = item.price * item.quantity,
+        0
+    );
 
     if (cart.items.length === 0) {
         return (
@@ -85,7 +90,37 @@ const Cart = () => {
                 </div>
             ))}
           </div>
-          <Link to="/menu">Go to Menu</Link>
+          <div style={{ marginTop: "2rem" }}>
+            <p><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</p>
+            <button 
+              style={{
+                padding: "1rem 2rem",
+                backgroundColor: "#ff4d4d",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                marginRight: "1rem",
+              }}
+              onClick={clearCart}
+            >
+                Clear Cart
+            </button>
+            <Link to="/checkout">
+              <button
+                style={{
+                padding: "1rem 2rem",
+                backgroundColor: "#000",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",                
+              }}
+              >
+                Proceed to Checkout
+              </button>
+            </Link>
+          </div>          
         </div>
     );
 };
