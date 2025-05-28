@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
 
-    const totalPrice = cart.items.reduce(
-        (sum, item) => sum = item.price * item.quantity,
+    const totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity,
         0
     );
 
