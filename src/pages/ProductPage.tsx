@@ -1,49 +1,66 @@
 import { useParams } from "react-router-dom"; 
 import { useEffect, useState } from "react";
+import sushiData from "../data/sushiData.json";
 
-type Meal = {
-    idMeal: string;
-    strMeal: string;
-    strMealThumb: string;
-    strInstructions: string;
-    strCategory: string;
-    strArea: string;
+type SushiItem = {
+    id: number
+    title: string;
+    thumbnail: string;
+    description: string;
+    category: string;
+    price: number;
 };
 
 const ProductPage = () => {
     const { id } = useParams<{ id: string }>();
-    const [meal, setMeal] = useState<Meal | null>(null);
+    const [item, setItem] = useState<SushiItem | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchMeal = async () => {
+        const fetchProduct = async () => {
             try {
-                const res = await fetch(
-                    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-                );
+                const res = await fetch(`https://dummyjson.com/products/${id}`);
                 const data = await res.json();
-                setMeal(data.meals[0]);
-                setLoading(false);
+
+                const localData = sushiData.find((dish) => dish.id === Number(id));
+
+                if (!localData) {
+                    setItem(null);
+                    return;
+                }
+
+
+                const sushiItem: SushiItem = {
+                    id: data.id,
+                    title: localData.title,
+                    thumbnail: localData.image,
+                    category: localData.category,
+                    description: localData.description,
+                    price: data.price,                  
+                };
+
+                setItem(sushiItem);
             } catch (err) {
-                console.error("Failed to fetch meal:", err);
+                console.error("Failed to fetch product:", err);
+            } finally { 
                 setLoading(false);
             }
         };
 
-        fetchMeal();
+        fetchProduct();
     }, [id]);
 
     if (loading) return <p>Loading...</p>;
-    if (!meal) return <p>Meal not found</p>;
+    if (!item) return <p>Product not found</p>;
 
 
     return (
         <div style={{ padding: "2rem" }}>
-            <h1>{meal.strMeal}</h1>
-            <img src={meal.strMealThumb} alt={meal.strMeal} width="300" />
-            <p><strong>Category:</strong> {meal.strCategory}</p>
-            <p><strong>Origin:</strong>{meal.strArea}</p>
-            <p><strong>Instruction:</strong>{meal.strInstructions}</p>
+            <h1>{item.title}</h1>
+            <img src={item.thumbnail} alt={item.title} width="300" />
+            <p><strong>Category:</strong> {item.category}</p>
+            <p><strong>Price:</strong>{item.price}</p>
+            <p><strong>Description:</strong>{item.description}</p>
 
             <button style={{
                 padding: "1rem 2rem",

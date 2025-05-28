@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title": "Salamon Nigiri",
+        "category": "Sushi",
+        "thumbnail": "https://izzycooking.com/wp-content/uploads/2020/10/Salmon-Nigiri-thumbnail-500x375.jpg",
+        "description": "Freshly sliced salmon on a bed of perfectly seasoned rice. A classic favorite!"
+    },
+    {
+       "id": 2,
+        "title": "Tuna Roll",
+        "category": "Roll",
+        "thumbnail": "https://usakor.com/jayskitchen/wp-content/uploads/sites/157/2020/07/Tuna-Roll-3-1920x1281.jpg",
+        "description": "Delicious tuna wrapped in soft rice and crispy seaweed. A must-try roll!"
+    },
+    {
+        "id": 3,
+        "title": "Miso Soup",
+        "category": "Soup",
+        "thumbnail": "https://purpleavocado.de/wp-content/uploads/2015/11/Miso-soup-1.jpg",
+        "description": "Warm and savory miso broth with tofu, seaweed, and scallions. Comfort in a bowl."
+    },
+    {
+        "id": 4,
+        "title": "Mochi Dessert",
+        "category": "Dessert",
+        "thumbnail": "https://mim.p7s1.io/pis/ld/89f2zChLCVyZ-c1vEwXZAanB-DJ78rnq2V2gRWTHzVV6NywNWMSJCEGmZ4YSENP-WRL0b9lo2z_IfGOSZaMRUYiR16XBQyLIQxaY6URk3ChOz0YNksv-_e4NFr0_a2_sNapSebl9G7Q/profile:original?w=1070",
+        "description": "Chewy mochi balls filled with creamy ice cream. A sweet Japanese delight."
+    },
+     {
+        "id": 5,
+        "title": "Avocado Roll",
+        "category": "Roll",
+        "thumbnail": "https://143267251.cdn6.editmysite.com/uploads/1/4/3/2/143267251/R47HLU363AXZ4TZF73QQPCO4.jpeg",
+        "description": "Smooth avocado with fresh rice and crisp seaweed. Light and tasty!"
+    }
+]

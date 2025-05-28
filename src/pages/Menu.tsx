@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchSushiData } from "../api/meals";
+import sushiData from "../data/sushiData.json";
+import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
@@ -8,15 +9,21 @@ const Menu = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
     
-    const categories = ["All", "Sushi", "Roll", "Dessert", "Soup"];
+    const categories = ["All", "Sushi", "Roll", "Soup", "Dessert"];
     
     useEffect (() => {
         async function loadData() {
             try {
-                const sushi = await fetchSushiData();
-                setMeals(sushi);
+                const products = await fetchProducts();
+                
+                const sushiMock = sushiData.map((dish, index) => ({
+                    ...dish,
+                    price: products[index]?.price ?? 0,
+                }));
+
+                setMeals(sushiMock);
             } catch (err) {
-                setError("Failed to load sushi 😔");
+                setError("Failed to load sushi menu 😔");
             } finally {
                 setLoading(false);
             }
@@ -31,13 +38,11 @@ const Menu = () => {
 
         const filteredMeals = selectedCategory === "All"
                   ? meals
-                  : meals.filter((meal) =>
-                      meal.strCategory.toLowerCase().includes(selectedCategory.toLowerCase())
-                    );
+                  : meals.filter((meal) => meal.category === selectedCategory);
 
         return (
         <div style={{ padding: "1rem" }}>
-            <h1>🍣Welcom to our Sushi Menu!🍣</h1>
+            <h1>🍣 Welcome to our Sushi World! 🍣</h1>
             <p>Discover the freshest and most delicious sushi dishes made just for you.</p>
             
             {/* Category Buttons */}
@@ -49,7 +54,7 @@ const Menu = () => {
                         style={{
                           marginRight: "0.5rem",
                           padding: "0.5rem 1rem",
-                          backgroundColor: selectedCategory === category ? "lightcoral" : "#000",
+                          backgroundColor: selectedCategory === category ? "#ffd700" : "#000",
                           color: selectedCategory === category ? "#000" : "#fff",
                           border: "1px solid #ccc",
                           borderRadius: "5px",
@@ -61,7 +66,7 @@ const Menu = () => {
                 ))}
             </div>
 
-            {/* Meals Grid */}
+            {/* Sushi Grid */}
             <div
                 style={{
                     display: "grid",
@@ -70,23 +75,28 @@ const Menu = () => {
                 }}
             >
                 {filteredMeals.map((meal) => (
-                    <Link to={`/product/${meal.idMeal}`} key={meal.idMeal} style={{ textDecoration: "none", color: "inherit"}}>
+                    <Link 
+                      to={`/product/${meal.id}`} 
+                      key={meal.id}
+                      style={{ textDecoration: "none", color: "inherit"}}>
                         <div
                           style={{
                             border: "1px solid #ccc",
                             borderRadius: "10px",
                             padding: "1rem",
-                            width: "200px",
+                            backgroundColor: "#fff5ee",
 
                           }}
                         >
                           <img
-                            src={meal.strMealThumb}
-                            alt={meal.strMeal}
+                            src={meal.thumbnail}
+                            alt={meal.title}
                             style={{ width: "100%", borderRadius: "8px" }}
                           />
-                          <h3>{meal.strMeal}</h3>
-                          <p><strong>Category:</strong> {meal.strCategory}</p>
+                          <h3>{meal.title}</h3>
+                          <p><strong>Category:</strong> {meal.category}</p>
+                          <p><strong>Price:</strong> ${meal.price}</p>
+                          <p><strong>Description:</strong> {meal.description}</p>
                         </div>
                     </Link>
                 ))}
