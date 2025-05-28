@@ -79,7 +79,7 @@ const ProductPage = () => {
             <h1>{item.title}</h1>
             <img src={item.thumbnail} alt={item.title} width="300" />
             <p><strong>Category:</strong> {item.category}</p>
-            <p><strong>Price:</strong>{item.price}</p>
+            <p><strong>Price:</strong>${item.price}</p>
             <p><strong>Description:</strong>{item.description}</p>
 
             <button 

@@ -43,8 +43,8 @@ const Cart = () => {
                     style={{ width: "100%", borderRadius: "8px" }}
                   />
                   <h3>{item.title}</h3>
-                  <p><strong>Price:</strong> ${item.price}</p>
-                  <p><strong>Quantity:</strong> ${item.quantity}</p>
+                  <p><strong>Price:</strong> ${item.price.toFixed(2)}</p>
+                  <p><strong>Quantity:</strong> {Number(item.quantity)}</p>
                   <div style={{ display: "flex", gap: "0.rem", marginTop: "0.5rem" }}>
                     <button
                       style={{
