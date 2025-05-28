@@ -8,6 +8,7 @@ const Menu = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
+    const [serchQuery, setSerchQuery] = useState("");
     
     const categories = ["All", "Sushi", "Roll", "Soup", "Dessert"];
     
