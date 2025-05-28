@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 const Cart = () => {
-    const { cart } = useCart();
+    const { cart, removeFromCart, updateQuantity } = useCart();
 
     if (cart.items.length === 0) {
         return (
@@ -41,10 +41,51 @@ const Cart = () => {
                   <h3>{item.title}</h3>
                   <p><strong>Price:</strong> ${item.price}</p>
                   <p><strong>Quantity:</strong> ${item.quantity}</p>
+                  <div style={{ display: "flex", gap: "0.rem", marginTop: "0.5rem" }}>
+                    <button
+                      style={{
+                        padding: "0.5rem",
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    >
+                        -
+                    </button>
+                    <button
+                       style={{
+                        padding: "0.5rem",
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                       }}
+                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    >
+                        +
+                    </button>
+                    <button
+                        style={{
+                        padding: "0.5rem",
+                        backgroundColor: "#000",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                        }}
+                        onClick={() => removeFromCart(item.id)}
+                    >
+                        Remove
+                    </button>
+                  </div>
                 </div>
             ))}
-            </div>
-            <Link to="/menu">Go to Menu</Link>
+          </div>
+          <Link to="/menu">Go to Menu</Link>
         </div>
     );
 };

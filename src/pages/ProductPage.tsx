@@ -25,6 +25,8 @@ const ProductPage = () => {
                 const data = await res.json();
 
                 const localData = sushiData.find((dish) => dish.id === Number(id));
+                console.log("API data:", data);
+                console.log("Local data:", localData);
 
                 if (!localData) {
                     setItem(null);
@@ -56,6 +58,13 @@ const ProductPage = () => {
     if (!item) return <p>Product not found</p>;
 
     const handleAddToCart = () => {
+        console.log("Adding to cart:", {
+            id: item.id,
+            title: item.title,
+            thumbnail: item.thumbnail,
+            price: item.price,
+            quantity: 1,
+        });
         addToCart({
             id: item.id,
             title: item.title,
