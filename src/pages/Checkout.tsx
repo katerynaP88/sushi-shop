@@ -15,11 +15,39 @@ const Checkout = () => {
     }
 
     return (
-        <div style={{ padding: "2rem" }}>
+      <div style={{ padding: "2rem" }}>
         <h1>Checkout</h1>
-        <p>Item to checkout: {cart.items.length}</p>
+        <h2>Your Order</h2>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "1rem",
+          }}
+        >
+            {cart.items.map((item) => (
+                <div
+                  key={item.id}
+                  style={{
+                    border: "1px",
+                    padding: "1rem",
+                    backgroundColor: "#fff5ee",
+                  }}
+                >
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    style={{ width: "100%", borderRadius: "8px" }}
+                    />
+                    <h3>{item.title}</h3>
+                    <p><strong>Price:</strong> ${item.price}</p>
+                    <p><strong>Quantity:</strong> {item.quantity}</p>
+                    <p><strong>Subtotal:</strong> ${(item.price * item.quantity). toFixed(2)}</p>
+                </div>
+            ))}
+        </div>
         <Link to="/cart">Back to Cart</Link>  
-        </div>        
+      </div>        
     );
 };
 
