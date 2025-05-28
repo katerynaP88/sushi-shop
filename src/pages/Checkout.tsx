@@ -3,7 +3,17 @@ import { Link } from "react-router-dom";
 
 
 const Checkout = () => {
-    const { cart } = useCart();
+    const { cart, clearCart } = useCart();
+
+    const totalPrice = cart.items.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
+
+    const handleCheckout = () => {
+        alert("Thank you for your order! Your sushi is on the way! 🍣");
+        clearCart();
+    };
 
     if (cart.items.length === 0) {
         return (
@@ -29,7 +39,8 @@ const Checkout = () => {
                 <div
                   key={item.id}
                   style={{
-                    border: "1px",
+                    border: "1px solid #ccc",
+                    borderRadius: "10px",
                     padding: "1rem",
                     backgroundColor: "#fff5ee",
                   }}
@@ -46,7 +57,36 @@ const Checkout = () => {
                 </div>
             ))}
         </div>
-        <Link to="/cart">Back to Cart</Link>  
+        <div style={{ marginTop: "2rem "}}>
+            <p><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</p>
+            <button
+              style={{
+                padding: "1rem 2rem",
+                backgroundColor: "#000",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
+              onClick={handleCheckout}              
+            >
+                Confirm Order
+            </button>
+            <Link to="/cart" style={{ marginLeft: "1rem "}}>
+              <button
+                style={{
+                padding: "1rem 2rem",
+                backgroundColor: "#000",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                }}
+              >
+                Back to Cart
+              </button>
+            </Link> 
+        </div>        
       </div>        
     );
 };
