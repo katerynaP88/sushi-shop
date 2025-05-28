@@ -7,7 +7,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { CartProvider } from "./context/CartContext",
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
