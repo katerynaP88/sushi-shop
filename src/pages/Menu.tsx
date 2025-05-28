@@ -8,7 +8,7 @@ const Menu = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
-    const [serchQuery, setSerchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
     
     const categories = ["All", "Sushi", "Roll", "Soup", "Dessert"];
     
@@ -45,6 +45,23 @@ const Menu = () => {
         <div style={{ padding: "1rem" }}>
             <h1>🍣 Welcome to our Sushi World! 🍣</h1>
             <p>Discover the freshest and most delicious sushi dishes made just for you.</p>
+
+            <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                <input
+                type="text"
+                placeholder="Search for suppressHydrationWarning..."
+                value={searchQuery}
+                onChange={ (e) => setSearchQuery(e.target.value)}
+                style={{
+                    padding: "0.5rem",
+                    width: "100%",
+                    maxWidth: "300px",
+                    border: "1px solid #ccc",
+                    borderRadius: "5px",
+                    fontSize: "1rem",
+                }}
+                />
+            </div>
             
             {/* Category Buttons */}
             <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
