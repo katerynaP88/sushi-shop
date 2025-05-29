@@ -22,15 +22,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/menu" element={<Menu />} />          
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
       <CartIcon onOpenCart={() => setShowCart(true)} />
-        {setShowCart && <CartPopup onClose={() => setShowCart(false)} />}
+        {showCart && <CartPopup onClose={() => setShowCart(false)} />}
     </CartProvider>
   );
 }
