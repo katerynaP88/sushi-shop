@@ -83,7 +83,7 @@ const Checkout = () => {
                 cursor: "pointer",
                 }}
               >
-                Back to Cart
+                <span>←</span> Back to Cart
               </button>
             </Link> 
         </div>        
