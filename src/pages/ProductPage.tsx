@@ -87,7 +87,8 @@ const ProductPage = () => {
             <p><strong>Price:</strong> ${item.price}</p>
             <p><strong>Description:</strong> {item.description}</p>
             <p><strong>Ingredients:</strong> {item.ingredients.join(", ")}</p>
-
+            
+            <div style={{ display: "Flex", gap: "1rem", marginTop: "1rem" }}>
             <button 
               style={{
                 padding: "1rem 2rem",
@@ -102,6 +103,24 @@ const ProductPage = () => {
             >
                 Add to Cart
             </button>
+            <Link to="/menu">
+              <button
+                style={{
+                    padding: "1rem 2rem",
+                    backgroundColor: "#ccc",
+                    color: "#000",
+                    border: "none",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                }}
+              >
+                <span>←</span> Back to Menu
+              </button>
+            </Link>
+            </div>
         </div>
     );
 };
