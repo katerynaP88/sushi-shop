@@ -70,20 +70,19 @@ const Menu = () => {
 
             <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
                 <input
-                type="text"
-                placeholder="Search for sushi..."
-                value={searchQuery}
-                onChange={ (e) => setSearchQuery(e.target.value)}
-                style={{
+                  type="text"
+                  placeholder="Search for sushi..."
+                  value={searchQuery}
+                  onChange={ (e) => setSearchQuery(e.target.value)}
+                  style={{
                     padding: "0.5rem",
                     width: "100%",
                     maxWidth: "300px",
                     border: "1px solid #ccc",
                     borderRadius: "5px",
                     fontSize: "1rem",
-                }}
-                />
-                {showCart && <CartPopup onClose={() => setShowCart(false)} />}
+                  }}
+                />                
             </div>
             
             {/* Category Buttons */}
@@ -203,6 +202,7 @@ const Menu = () => {
                     </Link>
                 ))}
             </div>
+            {showCart && <CartPopup onClose={() => setShowCart(false)} />}
         </div>
     );
 };
