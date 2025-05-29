@@ -37,9 +37,14 @@ const Menu = () => {
     if (error) return <p>{error}</p>;
     if (loading) return <p>Loading sushi menu...</p>;
 
-        const filteredMeals = selectedCategory === "All"
-                  ? meals
-                  : meals.filter((meal) => meal.category === selectedCategory);
+        const filteredMeals = meals
+        .filter((meal) =>
+          selectedCategory === "All" || meal.category === selectedCategory
+        )
+        .filter((meal) =>
+            meal.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            meal.description.toLowerCase().includes(searchQuery.toLowerCase())
+        )
 
         return (
         <div style={{ padding: "1rem" }}>
@@ -49,7 +54,7 @@ const Menu = () => {
             <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
                 <input
                 type="text"
-                placeholder="Search for suppressHydrationWarning..."
+                placeholder="Search for sushi..."
                 value={searchQuery}
                 onChange={ (e) => setSearchQuery(e.target.value)}
                 style={{
