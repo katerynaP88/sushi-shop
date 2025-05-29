@@ -8,8 +8,13 @@ import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { CartProvider } from "./context/CartContext";
+import { useState } from "react";
+import CartIcon from "./components/CartIcon";
+import CartPopup from "./components/CartPopup";
+
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
   return (
     <CartProvider>
       <BrowserRouter>
@@ -24,6 +29,8 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
+      <CartIcon onOpenCart={() => setShowCart(true)} />
+        {setShowCart && <CartPopup onClose={() => setShowCart(false)} />}
     </CartProvider>
   );
 }
