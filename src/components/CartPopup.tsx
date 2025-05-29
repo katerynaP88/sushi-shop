@@ -21,7 +21,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -56,7 +56,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                             <img
                               src={item.thumbnail}
                               alt={item.title}
-                              style={{ width: "80px", borderRadius: "8px", marginRight: "1rem"}}
+                              style={{ width: "200px", borderRadius: "8px", marginRight: "1rem"}}
                             />
                             <div style={{ flex: 1 }}>
                                 <h4 style={{ margin: "0 "}}>{item.title}</h4>
@@ -64,7 +64,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                                 <div style={{ display: "Flex", gap: "0.5rem" }}>
                                     <button
                                       style={{
-                                        padding: "0.25rem 05rem",
+                                        padding: "0.1rem 01rem",
                                         backgroundColor: "#000",
                                         color: "#fff",
                                         border: "none",
@@ -76,7 +76,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                                     </button>
                                     <button
                                       style={{
-                                        padding: "0.25rem 05rem",
+                                        padding: "0.2rem 01rem",
                                         backgroundColor: "#000",
                                         color: "#fff",
                                         border: "none",
@@ -88,7 +88,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                                     </button>
                                     <button
                                       style={{
-                                        padding: "0.25rem 05rem",
+                                        padding: "0.2rem 01rem",
                                         backgroundColor: "#ff4d4d",
                                         color: "#fff",
                                         border: "none",
@@ -103,7 +103,7 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                         </div>
                     ))}
                     <p><strong>Total:</strong> ${totalPrice.toFixed(2)}</p>
-                    <div style={{ display: "flex", gap: "1rem", margiTop: "1rem" }}>
+                    <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
                       <Link to="/cart">
                         <button
                           style={{

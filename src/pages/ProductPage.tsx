@@ -13,6 +13,7 @@ type SushiItem = {
     description: string;
     category: string;
     price: number;
+    ingredients: string[];
 };
 
 const ProductPage = () => {
@@ -43,7 +44,8 @@ const ProductPage = () => {
                     thumbnail: localData.thumbnail,
                     category: localData.category,
                     description: localData.description,
-                    price: data.price,                  
+                    price: data.price,
+                    ingredients: localData.ingredients,                                   
                 };
 
                 setItem(sushiItem);
@@ -82,8 +84,9 @@ const ProductPage = () => {
             <h1>{item.title}</h1>
             <img src={item.thumbnail} alt={item.title} width="300" />
             <p><strong>Category:</strong> {item.category}</p>
-            <p><strong>Price:</strong>${item.price}</p>
-            <p><strong>Description:</strong>{item.description}</p>
+            <p><strong>Price:</strong> ${item.price}</p>
+            <p><strong>Description:</strong> {item.description}</p>
+            <p><strong>Ingredients:</strong> {item.ingredients.join(", ")}</p>
 
             <button 
               style={{
