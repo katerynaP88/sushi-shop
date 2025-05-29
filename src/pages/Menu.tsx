@@ -3,6 +3,7 @@ import sushiData from "../data/sushiData.json";
 import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import CartPopup from "../components/CartPopup";
 
 
 type SushiItem = {
@@ -82,6 +83,7 @@ const Menu = () => {
                     fontSize: "1rem",
                 }}
                 />
+                {showCart && <CartPopup onClose={() => setShowCart(false)} />}
             </div>
             
             {/* Category Buttons */}
