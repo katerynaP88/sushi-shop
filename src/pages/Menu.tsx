@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 
 type SushiItem = {
@@ -20,7 +21,11 @@ const Menu = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
     const [searchQuery, setSearchQuery] = useState("");
-    
+    const [hoveredId, setHoveredId] = useState<number | null>(null);
+    const [showCart, setShowCart] = useState(false);
+
+    const { addToCart } = useCart()
+
     const categories = ["All", "Sushi", "Roll", "Soup", "Dessert"];
     
     useEffect (() => {
@@ -115,12 +120,14 @@ const Menu = () => {
                       style={{ textDecoration: "none", color: "inherit"}}>
                         <div
                           style={{
-                            border: "1px solid transparent",
+                            border: hoveredId === meal.id ? "2px solid #f28c38" :  "1px solid transparent",
                             borderRadius: "10px",
                             padding: "0.5rem",
                             backgroundColor: "#fff",
                             transition: "border 0.3s ease",
                           }}
+                          onMouseEnter={() => setHoveredId(meal.id)}
+                          onMouseLeave={() => setHoveredId(null)}
                         >
                           <img
                             src={meal.thumbnail}
@@ -153,7 +160,41 @@ const Menu = () => {
                           > 
                             ${meal.price.toFixed(2)}
                           </p>
-                          <p><strong>Description:</strong> {meal.description}</p>
+                          {hoveredId === meal.id && (
+                            <div style={{ textAlign: "center", marginTop: "0.5rem" }}>
+                                <button
+                                  style={{
+                                    padding: "0.5rem 1rem",
+                                    backgroundColor: "#000",
+                                    color: "#fff",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    cursor: "pointer",
+                                    marginBottom: "0.5rem",
+                                  }}
+                                  onClick={() => {
+                                    addToCart({
+                                        id: meal.id,
+                                        title: meal.title,
+                                        thumbnail: meal.thumbnail,
+                                        price: meal.price,
+                                        quantity: 1,
+                                    });
+                                    setShowCart(true);
+                                  }}
+                                >
+                                    Add to Cart
+                                </button>
+                                <p
+                                  style={{
+                                    color: "#555",
+                                    fontSize: "0.9rem",
+                                    margin: "0",
+                                  }}
+                                ><strong>Ingredients:</strong> {meal.ingredients.join(", ")}
+                                </p>
+                            </div>
+                          )}                         
                         </div>
                     </Link>
                 ))}
