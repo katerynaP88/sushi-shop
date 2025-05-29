@@ -104,21 +104,44 @@ const Menu = () => {
                       style={{ textDecoration: "none", color: "inherit"}}>
                         <div
                           style={{
-                            border: "1px solid #ccc",
+                            border: "1px solid transparent",
                             borderRadius: "10px",
-                            padding: "1rem",
-                            backgroundColor: "#fff5ee",
-
+                            padding: "0.5rem",
+                            backgroundColor: "#fff",
+                            transition: "border 0.3s ease",
                           }}
                         >
                           <img
                             src={meal.thumbnail}
                             alt={meal.title}
-                            style={{ width: "100%", borderRadius: "8px" }}
+                            style={{ 
+                                width: "100%",
+                                height: "200px",
+                                objectFit: "cover",
+                                borderRadius: "8px",                                
+                             }}
                           />
-                          <h3>{meal.title}</h3>
-                          <p><strong>Category:</strong> {meal.category}</p>
-                          <p><strong>Price:</strong> ${meal.price}</p>
+                          <h3 
+                            style={{
+                                color: "#000",
+                                fontSize: "1.1rem",
+                                margin: "0.5rem 0 0.25rem",
+                                textAlign: "center",
+                            }}
+                          >
+                            {meal.title}
+                          </h3>                                                                              
+                          <p
+                            style={{
+                                color: "#f28c38",
+                                fontSize: "1.3rem",
+                                fontWeight: "bold",
+                                margin: "0",
+                                textAlign: "center",
+                            }}
+                          > 
+                            ${meal.price.toFixed(2)}
+                          </p>
                           <p><strong>Description:</strong> {meal.description}</p>
                         </div>
                     </Link>
