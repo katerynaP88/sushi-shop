@@ -174,7 +174,9 @@ const Menu = () => {
                                     cursor: "pointer",
                                     marginBottom: "0.5rem",
                                   }}
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
                                     addToCart({
                                         id: meal.id,
                                         title: meal.title,
