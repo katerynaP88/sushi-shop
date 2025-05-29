@@ -3,8 +3,19 @@ import sushiData from "../data/sushiData.json";
 import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
 
+
+type SushiItem = {
+    id: number;
+    title: string;
+    thumbnail: string;
+    description: string;
+    category: string;
+    price: number;
+    ingredients: string[];
+}
+
 const Menu = () => {
-    const [meals, setMeals] = useState<any[]>([]);
+    const [meals, setMeals] = useState<SushiItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
