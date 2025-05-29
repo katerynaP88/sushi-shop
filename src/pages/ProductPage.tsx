@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
+
+
 
 type SushiItem = {
     id: number
