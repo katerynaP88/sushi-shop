@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import CartPopup from "../components/CartPopup";
+
 
 
 
@@ -20,6 +22,7 @@ const ProductPage = () => {
     const { id } = useParams<{ id: string }>();
     const [item, setItem] = useState<SushiItem | null>(null);
     const [loading, setLoading] = useState(true);
+    const [showCart, setShowCart] = useState(false);
     const { addToCart } = useCart();
 
     useEffect(() => {
@@ -77,6 +80,7 @@ const ProductPage = () => {
             price: item.price,
             quantity: 1,
         });
+        setShowCart(true);
     };
 
     return (
@@ -89,6 +93,21 @@ const ProductPage = () => {
             <p><strong>Ingredients:</strong> {item.ingredients.join(", ")}</p>
             
             <div style={{ display: "Flex", gap: "1rem", marginTop: "1rem" }}>
+            <Link to="/menu">
+              <button
+                style={{
+                    padding: "1rem 2rem",
+                    marginTop: "1rem",
+                    backgroundColor: "#ccc",
+                    color: "#000",
+                    border: "none",
+                    borderRadius: "8px",
+                    cursor: "pointer",                   
+                }}
+              >
+                <span>←</span> Back to Menu
+              </button>
+            </Link>
             <button 
               style={{
                 padding: "1rem 2rem",
@@ -102,25 +121,9 @@ const ProductPage = () => {
             onClick={handleAddToCart}
             >
                 Add to Cart
-            </button>
-            <Link to="/menu">
-              <button
-                style={{
-                    padding: "1rem 2rem",
-                    backgroundColor: "#ccc",
-                    color: "#000",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                }}
-              >
-                <span>←</span> Back to Menu
-              </button>
-            </Link>
+            </button>                      
             </div>
+            {showCart && <CartPopup onClose={() => setShowCart(false)} />}
         </div>
     );
 };
