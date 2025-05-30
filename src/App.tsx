@@ -20,13 +20,15 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Menu />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/menu" element={<Menu />} />          
+          <Route path="/menu" element={<Menu />} />    
+          <Route path="/cart" element={<Cart />} />      
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
+        <CartPopup />
       </BrowserRouter>
       <CartIcon onOpenCart={() => setShowCart(true)} />
         {showCart && <CartPopup onClose={() => setShowCart(false)} />}
