@@ -1,99 +1,66 @@
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
-type CartPopupProps = {
-    onClose: () => void;    
-};
 
-const CartPopup = ({ onClose }: CartPopupProps) => {
-    const { cart, removeFromCart, updateQuantity } = useCart();
+const CartPopup = () => {
+    const { cart, removeFromCart, updateQuantity, showCart, setShowCart } = useCart();
 
     const totalPrice = cart.items.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
     );
 
+    if (!showCart) return null;
+
     return(
-        <div 
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-        >
-            <div 
-              style={{
-                backgroundColor: "#fff",
-                padding: "2rem",
-                borderRadius: "10px",
-                maxWidth: "500px",
-                width: "90%",
-                maxHeight: "80vh",
-                overflowY: "auto",
-                }}
-            >
-                <h2>Your Cart</h2>
-                {cart.items.length === 0 ? (
-                    <p>Your cart is empty.</p>
-                ) : (                    
-                  <>
-                    {cart.items.map((item) => (
-                        <div
-                        key={item.id}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            marginBottom: "1rem",
-                        }}
-                        >
-                            <img
-                              src={item.thumbnail}
-                              alt={item.title}
-                              style={{ width: "200px", borderRadius: "8px", marginRight: "1rem"}}
-                            />
-                            <div style={{ flex: 1 }}>
-                                <h4 style={{ margin: "0 "}}>{item.title}</h4>
-                                <p style={{ margin: "0.25rem 0"}}>${item.price.toFixed(2)} x {item.quantity}</p>
-                                <div style={{ display: "Flex", gap: "0.5rem" }}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg w-11/12 max-w-md max-h-[80vh] overflou-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2x1 font-bold">Your Cart</h2>
+              <button
+                  className="text-gray-500 hover:text-grey-700"
+                  onClick={() => setShowCart(false)}
+              >
+                  ⨉
+              </button>
+            </div>                
+            {cart.items.length === 0 ? (
+                <div>
+                  <p className="text-gray-600">Your cart is empty.</p>
+                  <button 
+                    className="mt-4 px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                    onClick={() => setShowCart(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+            ) : (                    
+                <>
+                  {cart.items.map((item) => (
+                      <div key={item.id} className="flex items-center mb-4">                                              
+                        <img
+                            src={item.thumbnail}
+                            alt={item.title}
+                            className="w-24 h-24 rounded-lg mr-4 object-cover"
+                        />
+                            <div className="flex-1">
+                                <h4 className="text-lg font-semibold">{item.title}</h4>
+                                <p className="text-gray-600">${item.price.toFixed(2)} x {item.quantity}</p>
+                                <div className="flex gap-2 mt-2">
                                     <button
-                                      style={{
-                                        padding: "0.1rem 01rem",
-                                        backgroundColor: "#000",
-                                        color: "#fff",
-                                        border: "none",
-                                        borderRadius: "5px",                                
-                                      }}
+                                      className="px-2 py-1 bg-black text-white rounded hover:bg-gray-800"
                                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                     >
                                         -
                                     </button>
                                     <button
-                                      style={{
-                                        padding: "0.2rem 01rem",
-                                        backgroundColor: "#000",
-                                        color: "#fff",
-                                        border: "none",
-                                        borderRadius: "5px",                                
-                                      }}
+                                      className="px-2 py-1 bg-black text-white rounded hover:bg-gray-800"
                                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                     >
                                         +
                                     </button>
                                     <button
-                                      style={{
-                                        padding: "0.2rem 01rem",
-                                        backgroundColor: "#ff4d4d",
-                                        color: "#fff",
-                                        border: "none",
-                                        borderRadius: "5px",                                
-                                      }}
+                                      className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
                                       onClick={() => removeFromCart(item.id)}
                                     >
                                         Remove
@@ -102,32 +69,19 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
                             </div>
                         </div>
                     ))}
-                    <p><strong>Total:</strong> ${totalPrice.toFixed(2)}</p>
-                    <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+                    <p className="text-lg font-bold">Total: ${totalPrice.toFixed(2)}</p>
+                    <div className="flex gap-4 mt-4">
                       <Link to="/cart">
                         <button
-                          style={{
-                            padding: "0.5rem 1rem",
-                            backgroundColor: "#000",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "5px",
-                          }}
-                        >
-                          Go to Cart
+                          className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
+                            Go to Cart
                         </button>
                       </Link>
                       <button
-                        style={{
-                          padding: "0.5rem 1rem",
-                          backgroundColor: "#ccc",
-                          color: "#000",
-                          border: "none",
-                          borderRadius: "5px",
-                        }}
-                        onClick={onClose}
+                        className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                        onClick={() => setShowCart(false)}
                       >
-                        Close                          
+                          Close                          
                       </button>     
                     </div>
                   </>
