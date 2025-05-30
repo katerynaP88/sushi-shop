@@ -1,5 +1,21 @@
 export async function fetchProducts() {
-    const response = await fetch('https://dummyjson.com/products');
-    const data = await response.json();
-    return data.products;
+    try {
+        const response = await fetch('https://dummyjson.com/products');
+        if (!response.ok) throw new Error('Failed to fetch products');
+        const data = await response.json();
+        return data.products;
+    } catch (error) {
+        throw new Error('Failed to load product prices');
+    }
+}
+
+export async function fetchProductById(id: string) {
+    try {
+        const response = await fetch('https://dummyjson.com/products/${id}');
+        if (!response.ok) throw new Error('Failed to fetch product');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error('Failed to load product price');
+    }
 }
