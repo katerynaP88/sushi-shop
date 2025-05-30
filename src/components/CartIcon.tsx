@@ -1,49 +1,18 @@
 import { useCart } from "../context/CartContext";
 
-type CartIconProps = {
-    onOpenCart: () => void;      
-};
 
-const CartIcon = ({ onOpenCart }: CartIconProps) => {
-    const { cart } = useCart();
+const CartIcon = () => {
+    const { cart, setShowCart } = useCart();
     const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <div
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: "#f28c38",
-            borderRadius: "50%",
-            width: "60px",
-            height: "60px",
-            display: "flex",
-           justifyContent: "center",
-           alignItems: "center",
-           cursor: "pointer",
-           boxShadow: "0 2px 5px rgba(0,0,0,0.3)",
-          }}
-          onClick={onOpenCart}
+        <div 
+          className="fixed bottom-5 right-5 bg-orange-500 rounded-full w-16 h-16 flex items-center justify-center cursor-pointer shadow-lg hover:bg-orange-600 transition"
+          onClick={() => setShowCart(true)}
         >
-            <span style={{ fontSize: "1.5rem", color: "#fff" }}>🛒</span>
+            <span className="ttext-2x1 ext-white">🛒</span>
             {itemCount > 0 && (
-                <span
-                  style={{
-                    position: "absolute",
-                    top: "-5px",
-                    right: "-5px",
-                    backgroundColor: "#ff4d4d",
-                    color: "fff",
-                    borderRadius: "50%",
-                    width: "20px",
-                    height: "20px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: "0.8rem",
-                  }}
-                >
+                <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex item-center justify-center text-xs">
                   {itemCount}  
                 </span>
             )}
