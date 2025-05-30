@@ -2,58 +2,34 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
-import CartPopup from "../components/CartPopup";
+import { fetchProductById } from "../api/products";
+import { SushiItem } from "../types";
 
-
-
-
-type SushiItem = {
-    id: number
-    title: string;
-    thumbnail: string;
-    description: string;
-    category: string;
-    price: number;
-    ingredients: string[];
-};
 
 const ProductPage = () => {
     const { id } = useParams<{ id: string }>();
     const [item, setItem] = useState<SushiItem | null>(null);
     const [loading, setLoading] = useState(true);
-    const [showCart, setShowCart] = useState(false);
-    const { addToCart } = useCart();
+    const [error, setError] = useState<string | null>(null);
+    const { addToCart, setShowCart } = useCart();
+
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const res = await fetch(`https://dummyjson.com/products/${id}`);
-                const data = await res.json();
-
+        async function fetchProduct() {   
+             try {
                 const localData = sushiData.find((dish) => dish.id === Number(id));
-                console.log("API data:", data);
-                console.log("Local data:", localData);
-
                 if (!localData) {
                     setItem(null);
                     return;
                 }
 
-
-                const sushiItem: SushiItem = {
-                    id: data.id,
-                    title: localData.title,
-                    thumbnail: localData.thumbnail,
-                    category: localData.category,
-                    description: localData.description,
-                    price: data.price,
-                    ingredients: localData.ingredients,                                   
-                };
-
-                setItem(sushiItem);
+                const apiData = await fetchProductById(id!);
+                setItem({
+                    ...localData,
+                    price: apiData.price ?? 10,
+                } as SushiItem);
             } catch (err) {
-                console.error("Failed to fetch product:", err);
+                setError("Failed to fetch product");
             } finally { 
                 setLoading(false);
             }
@@ -62,68 +38,52 @@ const ProductPage = () => {
         fetchProduct();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
-    if (!item) return <p>Product not found</p>;
-
-    const handleAddToCart = () => {
-        console.log("Adding to cart:", {
-            id: item.id,
-            title: item.title,
-            thumbnail: item.thumbnail,
-            price: item.price,
-            quantity: 1,
-        });
-        addToCart({
-            id: item.id,
-            title: item.title,
-            thumbnail: item.thumbnail,
-            price: item.price,
-            quantity: 1,
-        });
-        setShowCart(true);
-    };
+    if (loading) return <p className="text-grae-600 p-4">Loading...</p>;
+    if (error) return <p className="text-red-500 p-4">{error}</p>
+    if (!item) return <p className="text-red-500 p-4">Product not found</p>;
 
     return (
-        <div style={{ padding: "2rem" }}>
-            <h1>{item.title}</h1>
-            <img src={item.thumbnail} alt={item.title} width="300" />
-            <p><strong>Category:</strong> {item.category}</p>
-            <p><strong>Price:</strong> ${item.price}</p>
-            <p><strong>Description:</strong> {item.description}</p>
-            <p><strong>Ingredients:</strong> {item.ingredients.join(", ")}</p>
-            
-            <div style={{ display: "Flex", gap: "1rem", marginTop: "1rem" }}>
-            <Link to="/menu">
-              <button
-                style={{
-                    padding: "1rem 2rem",
-                    marginTop: "1rem",
-                    backgroundColor: "#ccc",
-                    color: "#000",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",                   
-                }}
-              >
-                <span>←</span> Back to Menu
-              </button>
-            </Link>
-            <button 
-              style={{
-                padding: "1rem 2rem",
-                marginTop: "1rem",
-                backgroundColor: "#000",
-                color: "#fff",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer"
-            }}
-            onClick={handleAddToCart}
+        <div className="p4 max-w-4x1 mx-auto">
+            <h1 className="text-3 font-bold">{item.title}</h1>
+            <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="w-full max-w-md rounded-lg mt-4"
+            />
+            <p className="text-gray-600 mt-2">
+                <strong>Category:</strong> {item.category}
+            </p>
+            <p className="text-orange-500 font-bold text-x1 mt-2">
+                <strong>Price:</strong> ${item.price.toFixed(2)}
+            </p>
+            <p className="text-gray-600 mt-2">
+                <strong>Description:</strong> {item.description}
+            </p>
+            <p className="text-gray-600 mt-2">
+                <strong>Ingredients:</strong> {item.ingredients.join(", ")}
+            </p>
+            <div className="flex gap-4 mt-4">
+                <Link to="/menu">
+                    <button className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400">
+                        <span>←</span> Back to Menu
+                    </button>
+                </Link>
+                <button className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
+                    onClick={() => {
+                        addToCart({
+                            id: item.id,
+                            title: item.title,
+                            thumbnail: item.thumbnail,
+                            price: item.price,
+                            quantity: 1,
+                        });
+                        setShowCart(true);
+                    }}
+
             >
                 Add to Cart
             </button>                      
-            </div>
-            {showCart && <CartPopup onClose={() => setShowCart(false)} />}
+            </div>            
         </div>
     );
 };

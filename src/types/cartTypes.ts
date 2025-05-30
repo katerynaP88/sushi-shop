@@ -9,3 +9,13 @@ export interface CartItem {
 export interface CartState {
     items: CartItem[];
 }
+
+export interface SushiItem {
+    id: number;
+    title: string;
+    thumbnail: string;
+    description: string;
+    category: string;
+    ingredients: string[];
+    isPopular: boolean;
+}

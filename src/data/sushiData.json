@@ -5,77 +5,98 @@
         "category": "Sushi",
         "thumbnail": "https://media.istockphoto.com/id/640079966/photo/salmon-sushi-nigiri-on-a-black-plate-with-chopsticks.jpg?s=612x612&w=0&k=20&c=V_6xS1t1ilAeFNzvyX-CcRMv_H6y_1LqqgYn3Prr8Rw=",
         "description": "Freshly sliced salmon on a bed of perfectly seasoned rice. A classic favorite!",
-        "ingredients": ["Salmon", "Rice", "Soy Sauce"]},
+        "ingredients": ["Salmon", "Rice", "Soy Sauce"],
+        "isPopular": true
+    },
     {
        "id": 2,
         "title": "Tuna Roll",
         "category": "Roll",
         "thumbnail": "https://usakor.com/jayskitchen/wp-content/uploads/sites/157/2020/07/Tuna-Roll-3-1920x1281.jpg",
         "description": "Delicious tuna wrapped in soft rice and crispy seaweed. A must-try roll!",
-        "ingredients": ["sushi rice", "nori (seaweed)", "raw tuna", "wasabi", "soy sauce"]},
+        "ingredients": ["sushi rice", "nori (seaweed)", "raw tuna", "wasabi", "soy sauce"],
+        "isPopular": true
+    },
     {
         "id": 3,
         "title": "Miso Soup",
         "category": "Soup",
         "thumbnail": "https://purpleavocado.de/wp-content/uploads/2015/11/Miso-soup-1.jpg",
         "description": "Warm and savory miso broth with tofu, seaweed, and scallions. Comfort in a bowl.",
-        "ingredients": ["miso paste", "dashi broth", "tofu", "wakame seaweed", "green onions"]},
+        "ingredients": ["miso paste", "dashi broth", "tofu", "wakame seaweed", "green onions"],
+        "isPopular": true
+    },
     {
         "id": 4,
         "title": "Mochi Dessert",
         "category": "Dessert",
         "thumbnail": "https://mim.p7s1.io/pis/ld/89f2zChLCVyZ-c1vEwXZAanB-DJ78rnq2V2gRWTHzVV6NywNWMSJCEGmZ4YSENP-WRL0b9lo2z_IfGOSZaMRUYiR16XBQyLIQxaY6URk3ChOz0YNksv-_e4NFr0_a2_sNapSebl9G7Q/profile:original?w=1070",
         "description": "Chewy mochi balls filled with creamy ice cream. A sweet Japanese delight.",
-        "ingredients": ["glutinous rice flour", "sugar", "water", "cornstarch (for dusting)", "sweet red bean paste (anko)"]},
+        "ingredients": ["glutinous rice flour", "sugar", "water", "cornstarch (for dusting)", "sweet red bean paste (anko)"],
+        "isPopular": true
+    },
      {
         "id": 5,
         "title": "Avocado Roll",
         "category": "Roll",
         "thumbnail": "https://143267251.cdn6.editmysite.com/uploads/1/4/3/2/143267251/R47HLU363AXZ4TZF73QQPCO4.jpeg",
         "description": "Smooth avocado with fresh rice and crisp seaweed. Light and tasty!",
-        "ingredients": ["sushi rice", "nori (seaweed)", "avocado", "wasabi", "soy sauce"]},
+        "ingredients": ["sushi rice", "nori (seaweed)", "avocado", "wasabi", "soy sauce"],
+        "isPopular": true
+    },
     {
         "id": 6,
         "title": "Ebi Nigiri",
         "category": "Sushi",
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQv7-CYqqR9DDpMxk5wWMo6kqPLTsW71ZcQtK0dfgbwhJZH83ls707THZKL1EAzsORVZM&usqp=CAU",
         "description": "Tender shrimp over seasoned sushi rice, finished with a touch of wasabi.",
-        "ingredients": ["shrimp", "sushi rice", "wasabi", "soy sauce"]},
+        "ingredients": ["shrimp", "sushi rice", "wasabi", "soy sauce"],
+        "isPopular": true
+    },
     {
         "id": 7,
         "title": "Tamago Nigiri",
         "category": "Sushi",
         "thumbnail": "https://www.kuechengoetter.de/uploads/media/1800x1200/08/71768-tamago-nigiri-0.jpg?v=2-18",
         "description": "Sweet Japanese omelet laid over rice and wrapped with a nori strip.",
-        "ingredients": ["tamago (sweet omelet)", "sushi rice", "nori", "soy sauce"]},
+        "ingredients": ["tamago (sweet omelet)", "sushi rice", "nori", "soy sauce"],
+        "isPopular": true
+    },
     {
         "id": 8,
         "title": "Unagi Nigiri",
         "category": "Sushi",
         "thumbnail": "https://www.easyrecipesy.com/storage/posts_photo/sushi-unagi-nigiri-a-comprehensive-guide-to-mastering-unagi-nigiri-at-home-1726526728.webp",
         "description": "Grilled eel glazed with sweet soy sauce on a rice bed. Rich and savory!",
-        "ingredients": ["grilled eel", "sushi rice", "unagi sauce", "nori"]},
+        "ingredients": ["grilled eel", "sushi rice", "unagi sauce", "nori"],
+        "isPopular": true
+    },
     {
         "id": 9,
         "title": "Inari Sushi",
         "category": "Sushi",
         "thumbnail": "https://chefjacooks.com/wp-content/uploads/2023/04/inari-sushi-obento-square.jpg",
         "description": "Sweet tofu pockets filled with seasoned sushi rice. Vegan-friendly delight.",
-        "ingredients": ["seasoned rice", "fried tofu skin (aburaage)", "sesame seeds"]},
+        "ingredients": ["seasoned rice", "fried tofu skin (aburaage)", "sesame seeds"],
+        "isPopular": true
+    },
     {
         "id": 10,
         "title": "Hamachi Nigiri",
         "category": "Sushi",
         "thumbnail": "https://homedining.shop/cdn/shop/files/HAMACHINIGIRI_fe29a5a9-97e6-4091-b980-2d59fbf8d4ba.png?v=1720469487",
         "description": "Yellowtail sashimi over a perfectly formed rice base. Light and buttery.",
-        "ingredients": ["yellowtail", "sushi rice", "wasabi"]},
+        "ingredients": ["yellowtail", "sushi rice", "wasabi"],
+        "isPopular": true
+    },
     {
         "id": 11,
         "title": "Ikura Gunkan",
         "category": "Sushi",
         "thumbnail": "https://thumbs.dreamstime.com/b/ikura-gunkan-maki-salmon-roe-gunkan-sushi-ikura-gunkan-maki-salmon-roe-gunkan-sushi-sushi-menu-japanese-food-123012213.jpg",
         "description": "Seaweed-wrapped rice topped with luscious salmon roe. A burst of ocean flavor.",
-        "ingredients": ["sushi rice", "nori", "salmon roe (ikura)"]
+        "ingredients": ["sushi rice", "nori", "salmon roe (ikura)"],
+        "isPopular": true
     },
     {
         "id": 12,
@@ -83,7 +104,8 @@
         "category": "Roll",
         "thumbnail": "https://www.kurzyatac.cz/data/recept/sushi-california-roll-s-lososem-467.jpg",
         "description": "Crab stick, avocado, and cucumber wrapped in rice and seaweed. A Western classic!",
-        "ingredients": ["sushi rice", "nori", "crab stick", "avocado", "cucumber"]
+        "ingredients": ["sushi rice", "nori", "crab stick", "avocado", "cucumber"],
+        "isPopular": true
     },
     {
         "id": 13,
@@ -91,7 +113,8 @@
         "category": "Roll",
         "thumbnail": "https://popmenucloud.com/cdn-cgi/image/width=1200,height=630,format=auto,fit=cover/ozsqwtvc/f8f3eebc-075a-4eb3-9fe9-e23ea30ff8a5.jpg",
         "description": "Fresh tuna mixed with spicy mayo, rolled in seaweed and rice.",
-        "ingredients": ["sushi rice", "nori", "tuna", "spicy mayo", "green onion"]
+        "ingredients": ["sushi rice", "nori", "tuna", "spicy mayo", "green onion"],
+        "isPopular": true
     },
     {
         "id": 14,
@@ -99,7 +122,8 @@
         "category": "Roll",
         "thumbnail": "https://www.mashed.com/img/gallery/philadelphia-roll-what-you-should-know-before-ordering-upgrade/intro-1621611221.jpg",
         "description": "Cream cheese, salmon, and cucumber make this roll smooth and savory.",
-        "ingredients": ["sushi rice", "nori", "cream cheese", "smoked salmon", "cucumber"]
+        "ingredients": ["sushi rice", "nori", "cream cheese", "smoked salmon", "cucumber"],
+        "isPopular": true
     },
     {
         "id": 15,
@@ -107,7 +131,8 @@
         "category": "Roll",
         "thumbnail": "https://www.sushisushi.co.uk/cdn/shop/articles/Dragon_Rolls_520x500_520x500_67ebff70-1910-42d5-89f8-67d8d702f8cf.jpg?v=1740648780",
         "description": "Tempura shrimp and cucumber inside, topped with avocado and unagi sauce.",
-        "ingredients": ["sushi rice", "nori", "tempura shrimp", "avocado", "unagi sauce"]
+        "ingredients": ["sushi rice", "nori", "tempura shrimp", "avocado", "unagi sauce"],
+        "isPopular": true
     },
     {
         "id": 16,
@@ -115,7 +140,8 @@
         "category": "Roll",
         "thumbnail": "https://maarsushi.com/cdn/shop/files/3906114_1685371500.webp?v=1688044002",
         "description": "Refreshing and crunchy cucumber wrapped in rice and seaweed. Simple and vegan.",
-        "ingredients": ["sushi rice", "nori", "cucumber"]
+        "ingredients": ["sushi rice", "nori", "cucumber"],
+        "isPopular": true
     },
     {
         "id": 17,
@@ -123,7 +149,8 @@
         "category": "Roll",
         "thumbnail": "https://homedining.shop/cdn/shop/files/TUNATEMPURAROLL_1200x1200.png?v=1720469814",
         "description": "Crispy shrimp tempura roll with spicy sauce and cucumber crunch.",
-        "ingredients": ["sushi rice", "nori", "tempura shrimp", "cucumber", "spicy mayo"]
+        "ingredients": ["sushi rice", "nori", "tempura shrimp", "cucumber", "spicy mayo"],
+        "isPopular": true
     },
     {
         "id": 18,
@@ -131,7 +158,8 @@
         "category": "Soup",
         "thumbnail": "https://sudachirecipes.com/wp-content/uploads/2024/01/clear-soup-7.jpg",
         "description": "Light and savory broth with mushrooms and scallions. Simple and elegant.",
-        "ingredients": ["dashi", "shiitake mushrooms", "green onions", "soy sauce"]
+        "ingredients": ["dashi", "shiitake mushrooms", "green onions", "soy sauce"],
+        "isPopular": true
     },
     {
         "id": 19,
@@ -139,7 +167,8 @@
         "category": "Soup",
         "thumbnail": "https://static.toiimg.com/thumb/imgsize-66074,msid-86340350,width-375,height-210,resizemode-75/86340350.jpg",
         "description": "Delicate seaweed floating in a clear, mineral-rich broth.",
-        "ingredients": ["dashi", "wakame seaweed", "soy sauce", "tofu"]
+        "ingredients": ["dashi", "wakame seaweed", "soy sauce", "tofu"],
+        "isPopular": true
     },
     {
         "id": 20,
@@ -147,7 +176,8 @@
         "category": "Soup",
         "thumbnail": "https://static01.nyt.com/images/2016/02/10/dining/10MARTHA/10MARTHA-superJumbo.jpg",
         "description": "A warming soup of tofu, mushrooms, and miso. Healthy and hearty.",
-        "ingredients": ["miso paste", "shiitake mushrooms", "tofu", "green onions"]
+        "ingredients": ["miso paste", "shiitake mushrooms", "tofu", "green onions"],
+        "isPopular": true
     },
     {
         "id": 21,
@@ -155,7 +185,8 @@
         "category": "Soup",
         "thumbnail": "https://www.wandercooks.com/wp-content/uploads/2019/04/udon-noodle-soup-recipe-ft-500x500.jpg",
         "description": "Thick udon noodles in a savory soy-based broth. Comfort food at its best.",
-        "ingredients": ["udon noodles", "dashi", "soy sauce", "green onions"]
+        "ingredients": ["udon noodles", "dashi", "soy sauce", "green onions"],
+        "isPopular": true
     },
     {
         "id": 22,
@@ -163,7 +194,8 @@
         "category": "Soup",
         "thumbnail": "https://i.pinimg.com/736x/4f/d0/8d/4fd08d3c208555931a56f7928a01d319.jpg",
         "description": "Silky egg ribbons in a light, flavorful broth. A fusion favorite.",
-        "ingredients": ["chicken broth", "egg", "cornstarch", "green onions"]
+        "ingredients": ["chicken broth", "egg", "cornstarch", "green onions"],
+        "isPopular": true
     },
     {
         "id": 23,
@@ -171,7 +203,8 @@
         "category": "Soup",
         "thumbnail": "https://assets.bonappetit.com/photos/57ad09e5f1c801a1038bc995/1:1/w_2560%2Cc_limit/spicy-kimchi-tofu-stew.jpg",
         "description": "Bold flavors from kimchi and gochujang create a fiery, satisfying soup.",
-        "ingredients": ["kimchi", "gochujang", "tofu", "pork", "green onions"]
+        "ingredients": ["kimchi", "gochujang", "tofu", "pork", "green onions"],
+        "isPopular": true
     },
     {
         "id": 24,
@@ -179,7 +212,8 @@
         "category": "Dessert",
         "thumbnail": "https://t4.ftcdn.net/jpg/06/46/51/07/360_F_646510756_vkwQdkBqoEcYNKpquffDHdr0DckFhpkq.jpg",
         "description": "Chewy mochi filled with creamy matcha-flavored ice cream. Earthy and sweet.",
-        "ingredients": ["glutinous rice flour", "sugar", "water", "matcha powder", "ice cream"]
+        "ingredients": ["glutinous rice flour", "sugar", "water", "matcha powder", "ice cream"],
+        "isPopular": true
     },
     {
         "id": 25,
@@ -187,7 +221,8 @@
         "category": "Dessert",
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKgqG7U-r3EagKK3iTR3Ss885LwHU_dfkPbWVKS1-pdGsR61pGUkbT3UqQZ72DO04Pmw&usqp=CAU",
         "description": "Sweet red bean paste sandwiched between fluffy pancakes. A Japanese classic!",
-        "ingredients": ["flour", "sugar", "eggs", "red bean paste", "honey"]
+        "ingredients": ["flour", "sugar", "eggs", "red bean paste", "honey"],
+        "isPopular": true
     },
     {
         "id": 26,
@@ -195,7 +230,8 @@
         "category": "Dessert",
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnd5eVmByi2bNfhqq5r-P_bXUedK14VaC_tQ&s",
         "description": "Rich and creamy ice cream infused with premium matcha green tea.",
-        "ingredients": ["milk", "cream", "sugar", "matcha powder", "egg yolk"]
+        "ingredients": ["milk", "cream", "sugar", "matcha powder", "egg yolk"],
+        "isPopular": true
     },
     {
         "id": 27,
@@ -203,7 +239,8 @@
         "category": "Dessert",
         "thumbnail": "https://www.justonecookbook.com/wp-content/uploads/2022/11/Anmitsu-5290-I-1.jpg",
         "description": "Traditional Japanese parfait with agar jelly, fruit, and sweet syrup.",
-        "ingredients": ["agar agar", "fruit", "red bean paste", "sweet syrup", "ice cream"]
+        "ingredients": ["agar agar", "fruit", "red bean paste", "sweet syrup", "ice cream"],
+        "isPopular": true
     },
     {
         "id": 28,
@@ -211,7 +248,8 @@
         "category": "Dessert",
         "thumbnail": "https://shop.haase-food.com/out/haasefood/cms/reportage_taiyaki_fisch.jpg",
         "description": "Fish-shaped pastry filled with sweet red bean or custard. Fun and delicious!",
-        "ingredients": ["flour", "baking powder", "eggs", "milk", "red bean paste"]
+        "ingredients": ["flour", "baking powder", "eggs", "milk", "red bean paste"],
+        "isPopular": true
     },
     {
         "id": 29,
@@ -219,6 +257,7 @@
         "category": "Dessert",
         "thumbnail": "https://vbfitfuel.com/wp-content/uploads/2024/05/IMG_0985.jpeg",
         "description": "Creamy Japanese-style cheesecake with a refreshing citrus twist of yuzu.",
-        "ingredients": ["cream cheese", "sugar", "eggs", "yuzu juice", "biscuit base"]
+        "ingredients": ["cream cheese", "sugar", "eggs", "yuzu juice", "biscuit base"],
+        "isPopular": true
     }  
     ]

@@ -3,43 +3,31 @@ import sushiData from "../data/sushiData.json";
 import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { SushiItem } from "../types";
 
-
-
-type SushiItem = {
-    id: number;
-    title: string;
-    thumbnail: string;
-    description: string;
-    category: string;
-    price: number;
-    ingredients: string[];
-};
 
 const Menu = () => {
     const [meals, setMeals] = useState<SushiItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [selectedCategory, setSelectedCategory] = useState<string>("All");
+    const [selectedCategory, setSelectedCategory] = useState<string>("Most Ordered");
     const [searchQuery, setSearchQuery] = useState("");
     const [hoveredId, setHoveredId] = useState<number | null>(null);
-    const [showCart, setShowCart] = useState(false);
+    const { addToCart, setShowCart } = useCart();
 
-    const { addToCart } = useCart()
 
-    const categories = ["All", "Sushi", "Roll", "Soup", "Dessert"];
+    const categories = ["Most Ordered", "Sushi", "Roll", "Soup", "Dessert"];
     
     useEffect (() => {
         async function loadData() {
             try {
-                const products = await fetchProducts();
-                
+                const products = await fetchProducts();                
                 const sushiMock = sushiData.map((dish, index) => ({
                     ...dish,
-                    price: products[index]?.price ?? 0,
+                    price: products[index]?.price ?? 10,
                 }));
 
-                setMeals(sushiMock);
+                setMeals(sushiMock as SushiItem[]);
             } catch (err) {
                 setError("Failed to load sushi menu 😔");
             } finally {
@@ -51,12 +39,14 @@ const Menu = () => {
         loadData();
     }, []);
 
-    if (error) return <p>{error}</p>;
-    if (loading) return <p>Loading sushi menu...</p>;
+    if (error) return <p className="text-red-500">{error}</p>;
+    if (loading) return <p className="text-gray-600">Loading sushi menu...</p>;
 
         const filteredMeals = meals
         .filter((meal) =>
-          selectedCategory === "All" || meal.category === selectedCategory
+          selectedCategory === "Most Ordered"
+              ? meal.isPopular
+              : meal.category === selectedCategory
         )
         .filter((meal) =>
             meal.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -64,115 +54,60 @@ const Menu = () => {
         )
 
         return (
-        <div style={{ padding: "1rem" }}>
-            <h1>🍣 Welcome to our Sushi World! 🍣</h1>
-            <p>Discover the freshest and most delicious sushi dishes made just for you.</p>
+        <div className="h-64 bg-cover bg-center flex flex-col justify-center items-center text-white"
+            style={{ backgroundImage: 'url(/sushi-bg.jpg)'}}
+        >
+            <h1 className="text-4x1 font-bold">Discover Our Sushi</h1>
+            <p className="text-x1 mt-2">Discover the freshest and most delicious sushi dishes made just for you.</p>
 
-            <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+            <div className="mt-6 flex items-center max-w-md mx-auto">
+              <span className="text-2x1 mr-2">🔍</span>
                 <input
                   type="text"
                   placeholder="Search for sushi..."
                   value={searchQuery}
                   onChange={ (e) => setSearchQuery(e.target.value)}
-                  style={{
-                    padding: "0.5rem",
-                    width: "100%",
-                    maxWidth: "300px",
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                    fontSize: "1rem",
-                  }}
+                  className="w-full p-2 border border-gray-300 rounded-lg"
                 />                
-            </div>
+            </div>         
             
-            {/* Category Buttons */}
-            <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+            <div className="mt-4 flex gap-2 justify-center">
                 {categories.map((category) => (
                     <button 
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        style={{
-                          marginRight: "0.5rem",
-                          padding: "0.5rem 1rem",
-                          backgroundColor: selectedCategory === category ? "#ffd700" : "#000",
-                          color: selectedCategory === category ? "#000" : "#fff",
-                          border: "1px solid #ccc",
-                          borderRadius: "5px",
-                          cursor: "pointer",
-                        }}
+                        className={'px-4 py-2 rounded-lg ${selectedCategory === category ? "bg-orange-500 text-white" : "bg-black text-white hover:bg-gray-800"}'}
                     >
                         {category}
                     </button>
                 ))}
             </div>
 
-            {/* Sushi Grid */}
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-                    gap: "1rem"
-                }}
-            >
+            <div className="mt-6 grid grid-colos-1 sm:grid-colos-2 md:grid-colos-3 lg:grid-colos-4 gap-4 justify-items-center">
                 {filteredMeals.map((meal) => (
-                    <Link 
-                      to={`/product/${meal.id}`} 
+                    <Link to={`/product/${meal.id}`} 
                       key={meal.id}
-                      style={{ textDecoration: "none", color: "inherit"}}>
-                        <div
-                          style={{
-                            border: hoveredId === meal.id ? "2px solid #f28c38" :  "1px solid transparent",
-                            borderRadius: "10px",
-                            padding: "0.5rem",
-                            backgroundColor: "#fff",
-                            transition: "border 0.3s ease",
-                          }}
-                          onMouseEnter={() => setHoveredId(meal.id)}
-                          onMouseLeave={() => setHoveredId(null)}
+                      className="no-underline">
+                        <div 
+                        className={'p-2 bg-white rounded-lg shadow-lg hover:border-orange-500 transition w-64 ${hoveredId === meal.id ? "border-orange-500" : ""}'}                         
+                        onMouseEnter={() => setHoveredId(meal.id)}
+                        onMouseLeave={() => setHoveredId(null)}
                         >
                           <img
                             src={meal.thumbnail}
                             alt={meal.title}
-                            style={{ 
-                                width: "100%",
-                                height: "200px",
-                                objectFit: "cover",
-                                borderRadius: "8px",                                
-                             }}
+                            className="w-full h-48 object-cover rounded-lg"
                           />
-                          <h3 
-                            style={{
-                                color: "#000",
-                                fontSize: "1.1rem",
-                                margin: "0.5rem 0 0.25rem",
-                                textAlign: "center",
-                            }}
-                          >
+                          <h3 className="text-lg font-semibold text-center text-black">
                             {meal.title}
                           </h3>                                                                              
-                          <p
-                            style={{
-                                color: "#f28c38",
-                                fontSize: "1.3rem",
-                                fontWeight: "bold",
-                                margin: "0",
-                                textAlign: "center",
-                            }}
-                          > 
+                          <p  className="text-orange-500 font-bold text-center text-x1"> 
                             ${meal.price.toFixed(2)}
                           </p>
                           {hoveredId === meal.id && (
-                            <div style={{ textAlign: "center", marginTop: "0.5rem" }}>
+                            <div className="text-center mt-2">
                                 <button
-                                  style={{
-                                    padding: "0.5rem 1rem",
-                                    backgroundColor: "#000",
-                                    color: "#fff",
-                                    border: "none",
-                                    borderRadius: "5px",
-                                    cursor: "pointer",
-                                    marginBottom: "0.5rem",
-                                  }}
+                                  className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
                                   onClick={(e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
@@ -188,21 +123,15 @@ const Menu = () => {
                                 >
                                     Add to Cart
                                 </button>
-                                <p
-                                  style={{
-                                    color: "#555",
-                                    fontSize: "0.9rem",
-                                    margin: "0",
-                                  }}
-                                ><strong>Ingredients:</strong> {meal.ingredients.join(", ")}
+                                <p className="text-gray-600 text-sm mt-1">
+                                  <strong>Ingredients:</strong> {" "} {meal.ingredients.join(", ")}
                                 </p>
                             </div>
                           )}                         
                         </div>
                     </Link>
                 ))}
-            </div>
-            {showCart && <CartPopup onClose={() => setShowCart(false)} />}
+            </div>            
         </div>
     );
 };
