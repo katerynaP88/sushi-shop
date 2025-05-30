@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { useCart } from "../context/CartContext";
 import { fetchProductById } from "../api/products";
-import { SushiItem } from "../types";
+import { type SushiItem } from "../types/cartTypes";
+import { Link } from "react-router-dom";
 
 
 const ProductPage = () => {

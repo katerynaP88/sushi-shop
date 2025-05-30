@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
-import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
+import { fetchProducts } from "../api/products";
 import { useCart } from "../context/CartContext";
-import { SushiItem } from "../types";
+import { type SushiItem } from "../types/cartTypes";
 
 
 const Menu = () => {

@@ -18,4 +18,5 @@ export interface SushiItem {
     category: string;
     ingredients: string[];
     isPopular: boolean;
+    price: number;
 }
