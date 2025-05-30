@@ -1,17 +1,17 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 interface AuthContextType {
-    showAutModal: boolean;
+    showAuthModal: boolean;
     setShowAuthModal: (show: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [showAutModal, setShowAuthModal] = useState(false);
+    const [showAuthModal, setShowAuthModal] = useState(false);
 
     return (
-        <AuthContext.Provider value={{ setShowAuthModal, setAuthModal }}>
+        <AuthContext.Provider value={{ setShowAuthModal, showAuthModal }}>
             {children}
         </AuthContext.Provider>
     );
