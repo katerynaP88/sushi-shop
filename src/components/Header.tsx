@@ -2,16 +2,26 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Header() {
-    const { cart } = useCart();
+    const { cart, setShowCart } = useCart();
     const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <header style={{ padding: "1rem", borderBottom: "1px solid #ccc"}}>
-            <nav style={{ display: "flex", gap: "1rem"}}>
-                <Link to="/">Home</Link>
-                <Link to="/menu">Menu</Link>                
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+        <header className="p-4 bg-white shadow-md flex justify-between items-center">
+            <div className="text-2x1 font-bold text-orange-500">
+                <Link to="/">Sushi Shop</Link>
+            </div>
+            <nav className=" flex items-center gap-4">
+                <Link to="/menu" className="text-black hover:text-orange-500">
+                    Menu
+                </Link>  
+                <button className="text-2x1 text-black hover:text-orange-500"
+                onClick={() => setShowCart(true)}
+                >
+                    🛒 {itemCount > 0 && <span className="text-sm text-red-500">
+                    {itemCount}</span>}
+                </button>
+                <button className="text-2x1 text-black hover:text-orange-500">🙎🏻‍♂️</button> 
+                <button className="text-2x1 text-black hover:text-orange-500">🔍</button>       
             </nav>
         </header>
     );

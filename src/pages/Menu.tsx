@@ -3,7 +3,7 @@ import sushiData from "../data/sushiData.json";
 import { fetchProducts } from "../api/products";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import CartPopup from "../components/CartPopup";
+
 
 
 type SushiItem = {
@@ -14,7 +14,7 @@ type SushiItem = {
     category: string;
     price: number;
     ingredients: string[];
-}
+};
 
 const Menu = () => {
     const [meals, setMeals] = useState<SushiItem[]>([]);
