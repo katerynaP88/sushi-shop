@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { SushiItem } from "../types/cartTypes";
+import { type SushiItem } from "../types/cartTypes";
 
 export const useSearch = (meals: SushiItem[]) => {
     const [searchQuery, setSearchQuery] = useState("");

@@ -3,6 +3,7 @@ import sushiData from "../data/sushiData.json";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../api/products";
 import { useCart } from "../context/CartContext";
+import { useSearch } from "../hooks/useSearch";
 import { type SushiItem } from "../types/cartTypes";
 
 
@@ -12,7 +13,7 @@ const Menu = () => {
     const [error, setError] = useState<string | null>(null);
     const [hoveredId, setHoveredId] = useState<number | null>(null);
     const { addToCart, setShowCart } = useCart();    
-    const {searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, filteredItems } = useSearch(meals);
+    const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, filteredItems } = useSearch(meals);
     
     const categories = ["Most Ordered", "Sushi", "Roll", "Soup", "Dessert"];
     
@@ -80,7 +81,7 @@ const Menu = () => {
                 ))}
             </div>
             <div className="mt-6 grid grid-colos-1 sm:grid-colos-2 md:grid-colos-3 lg:grid-colos-4 gap-4 justify-items-center">
-                {filteredItems.map((meal) => (
+                {filteredItems.map((meal: SushiItem) => (
                     <Link to={`/product/${meal.id}`} 
                       key={meal.id}
                       className="no-underline w-64">
