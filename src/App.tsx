@@ -16,15 +16,15 @@ function App() {
         <CartProvider>
             <BrowserRouter>
                 <Header />
+                <AuthModal />
+                <CartPopup />
                 <Routes>
                     <Route path="/" element={<Menu />} />
-                    <Route path="/product/:id" element={<ProductPage />} />
-                    <Route path="/menu" element={<Menu />} />    
+                    <Route path="/menu" element={<Menu />} /> 
+                    <Route path="/product/:id" element={<ProductPage />} />                       
                     <Route path="/cart" element={<Cart />} />      
                     <Route path="/checkout" element={<Checkout />} />          
                 </Routes>
-                <CartPopup />
-                <AuthModal onClose={() => {}} />
             </BrowserRouter>      
         </CartProvider>
     </AuthProvider>
