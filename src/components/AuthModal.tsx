@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useForm, SubmitHandler } from "react-hook-form";
+import {useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
