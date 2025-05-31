@@ -1,32 +1,33 @@
-import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CartDrawer from './components/CartDrawer';
+import Header from "./components/Header";
 import Home from "./pages/Home";
+import ProductPage from "./pages/ProductPage";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import { IconButton } from '@mui/material';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext"
+import CartPopup from "./components/CartPopup";
+import AuthModal from "./components/AuthModal";
 
 
 function App() {  
-  const [isCartOpen, setCartOpen] = useState(false);
-
   return (
-    <Router>
-      <header style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem' }}>
-        <IconButton color="primary" onClick={() => setCartOpen(true)}>
-          <ShoppingCartIcon />
-        </IconButton>
-      </header>
-
-      <CartDrawer open={isCartOpen} onClose={() => setCartOpen(false)} />
-
-      <Routes>
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/checkout" element={<Checkout />} />
-              </Routes>
-    </Router>
+    <AuthProvider>
+        <CartProvider>
+            <BrowserRouter>
+                <Header />
+                <AuthModal />
+                <CartPopup />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/menu" element={<Home />} /> 
+                    <Route path="/product/:id" element={<ProductPage />} />                       
+                    <Route path="/cart" element={<Cart />} />      
+                    <Route path="/checkout" element={<Checkout />} />          
+                </Routes>
+            </BrowserRouter>      
+        </CartProvider>
+    </AuthProvider>
   );
 }
 

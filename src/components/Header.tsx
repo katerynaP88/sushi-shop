@@ -1,32 +1,20 @@
-import React, { useState } from "react";
-import { Drawer, IconButton, Badge } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Cart from "./CartPopup"; 
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
-const Header = () => {
-  const [openCart, setOpenCart] = useState(false);
+function Header() {
+    const { cart, setShowCart } = useCart();
+    const { setShowAuthModal } = useAuth();
+    const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const toggleCart = () => {
-    setOpenCart(!openCart);
-  };
-
-  return (
-    <>
-      <header style={{ display: "flex", justifyContent: "flex-end", padding: "1rem" }}>
-        <IconButton color="inherit" onClick={toggleCart}>
-          <Badge color="secondary">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-      </header>
-
-      <Drawer anchor="right" open={openCart} onClose={toggleCart}>
-        <div style={{ width: 400, padding: "1rem" }}>
-          <Cart onClose={toggleCart} />
-        </div>
-      </Drawer>
-    </>
-  );
-};
+    return (
+        <header>
+            <div>
+                <Link to="/">Home</Link>
+            </div>
+          
+        </header>
+    );
+}
 
 export default Header;

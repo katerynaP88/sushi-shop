@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom"; 
+import { useParams, Link } from "react-router-dom"; 
 import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { useCart } from "../context/CartContext";
 import { fetchProductById } from "../api/products";
 import { type SushiItem } from "../types/cartTypes";
-import { Link } from "react-router-dom";
+import { Container, Typography, Box, Button, Card, CardMedia, CardContent, Stack } from "@mui/material";
+
 
 
 const ProductPage = () => {
@@ -44,49 +45,61 @@ const ProductPage = () => {
         if (!item) return <p className="text-red-500 p-4">Product not found</p>;
 
         return (
-            <div className="p4 max-w-4x1 mx-auto">
-                <h1 className="text-3 font-bold">{item.title}</h1>
-                <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-full max-w-md rounded-lg mt-4 object-cover"
-                />
-                <p className="text-gray-600 mt-2">
-                    <strong>Category:</strong> {item.category}
-                </p>
-                <p className="text-yellow-600 font-bold text-xl mt-2">
-                    <strong>Price:</strong> ${item.price.toFixed(2)}
-                </p>
-                <p className="text-gray-600 mt-2">
-                    <strong>Description:</strong> {item.description}
-                </p>
-                <p className="text-gray-600 mt-2">
-                    <strong>Ingredients:</strong> {item.ingredients.join(", ")}
-                </p>
-                <div className="flex gap-4 mt-4">
-                    <Link to="/menu">
-                        <button className="px-4 py-2 bg-gray-300 rounded-md text-gray-800 hover:bg-gray-400">
-                            <span>←</span> Back to Menu
-                        </button>
-                    </Link>
-                    <button 
-                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                        onClick={() => {
-                            addToCart({
+            <Container maxWidth="md" sx={{ py: 4 }}>
+                <Card>
+                    <CardMedia
+                        component="img"
+                        height="300"
+                        image={item.thumbnail}
+                        alt={item.title}
+                        sx={{ objectFit: "cover" }}
+                    />
+                    <CardContent>
+                        <Typography variant="h4" gutterBottom>
+                            {item.title}
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            <strong>Category:</strong> {item.category}
+                        </Typography>
+                        <Typography variant="h6" color="primary" sx={{ mt: 2 }}>
+                            <strong>Price:</strong> ${item.price.toFixed(2)}
+                         </Typography>
+                        <Typography variant="body1" sx={{ mt: 2 }}>
+                            <strong>Description:</strong> {item.description}
+                        </Typography>
+                        <Typography variant="body1" sx={{ mt: 2 }}>
+                            <strong>Ingredients:</strong> {item.ingredients.join(", ")}
+                        </Typography>
+
+                        <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
+                            <Button
+                                variant="outlined"
+                                component={Link}
+                                to="/menu"
+                                color="inherit"
+                            >
+                                ← Back to Menu
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                addToCart({
                                 id: item.id,
                                 title: item.title,
                                 thumbnail: item.thumbnail,
                                 price: item.price,
                                 quantity: 1,
-                            });
-                            setShowCart(true);
-                        }}
-
-                    >
-                        Add to Cart
-                    </button>                      
-                </div>            
-            </div>
+                                });
+                                setShowCart(true);
+                                }}
+                            >
+                                Add to Cart
+                            </Button>
+                        </Stack>
+                    </CardContent>
+                </Card>
+            </Container>
         );
     };
 
