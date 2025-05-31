@@ -43,7 +43,7 @@ const Menu = () => {
         <div className="p-4">
             <div 
                 className="h-64 bg-cover bg-center flex flex-col justify-center items-center text-white"
-                style={{ backgroundImage: `url(/sushi-bg.jpg)`}}
+                style={{ backgroundImage: `url(/"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2e_IFUOvw9nzdD45qUyATaSpRA8170E91Tg&s")`}}
             >
                 <h1 className="text-4x1 font-bold">Discover Our Sushi</h1>
                 <p className="text-x1 mt-2">Discover the freshest and most delicious sushi dishes made just for you.</p>
