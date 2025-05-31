@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Menu from "./pages/Menu";
+import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
@@ -19,8 +19,8 @@ function App() {
                 <AuthModal />
                 <CartPopup />
                 <Routes>
-                    <Route path="/" element={<Menu />} />
-                    <Route path="/menu" element={<Menu />} /> 
+                    <Route path="/" element={<Home />} />
+                    <Route path="/menu" element={<Home />} /> 
                     <Route path="/product/:id" element={<ProductPage />} />                       
                     <Route path="/cart" element={<Cart />} />      
                     <Route path="/checkout" element={<Checkout />} />          
