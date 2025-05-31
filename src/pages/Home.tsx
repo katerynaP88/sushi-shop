@@ -8,6 +8,9 @@ import { useFetch } from "../hooks/useFetch";
 import { Box, Typography, Container, TextField, IconButton, Grid, Button, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Stack } from "@mui/material";
+import { Card, CardMedia, CardContent, CardActions } from "@mui/material";
+import TextDecreaseTwoTone from "@mui/icons-material/TextDecreaseTwoTone";
 
 
 
@@ -78,46 +81,63 @@ const Home = () => {
   <IconButton onClick={() => setShowCart(true)}>
     <ShoppingCartIcon />
   </IconButton>
-</Container>            
-            <div className="mt-4 flex gap-2 justify-center flex-wrap">
+</Container>         
+            <Stack
+                direction="row"
+                spacing={1}
+                justifyContent="center"
+                flexWrap="wrap"
+                mt={2}
+            >
                 {categories.map((category) => (
-                    <button 
+                    <Button
                         key={category}
+                        variant={selectedCategory === category ? "contained" : "outlined"}
+                        color={selectedCategory === category ? "warning" : "inherit"}
                         onClick={() => setSelectedCategory(category)}
-                        className={`px-4 py-2 rounded-lg ${selectedCategory === category ? "bg-orange-500 text-white" : "bg-black text-white hover:bg-gray-800"}`}
                     >
                         {category}
-                    </button>
+                    </Button>
                 ))}
-            </div>
-            <div className="mt-6 grid grid-colos-1 sm:grid-colos-2 md:grid-colos-3 lg:grid-colos-4 gap-4 justify-items-center">
+            </Stack>
+            <Grid container spacing={2} mt={2}>
                 {filteredItems.map((meal: SushiItem) => (
-                    <Link to={`/product/${meal.id}`} 
-                      key={meal.id}
-                      className="no-underline w-64">
-                        <div 
-                            className={`p-4 bg-white rounded-lg shadow-lg hover:border-2 hover:border-orange-500 transition-all duration-300 h-[360px] flex flex-col justify-between ${hoveredId === meal.id ? "border-2 border-orange-500" : ""}`}                         
-                            onMouseEnter={() => setHoveredId(meal.id)}
-                            onMouseLeave={() => setHoveredId(null)}
-                        >
-                            <img
-                                src={meal.thumbnail}
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={meal.id}>
+                        <Link to={`/product/${meal.id}`} style={{ textDecoration: "none" }}>
+                            <Card 
+                              onMouseEnter={() => setHoveredId(meal.id)}
+                              onMouseLeave={() => setHoveredId(null)}
+                              sx={{
+                                height: 360,
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "space-between",
+                                border:
+                                    hoveredId === meal.id ? "2px solid #ff9800" : "1px solid #e0e0e0",
+                                    transition: "0.3s",
+                                    "&:hover": {
+                                        borderColor: "#ff9800",
+                                    },
+                              }}
+                            >
+                                <CardMedia
+                                component="img"
+                                image={meal.thumbnail}
                                 alt={meal.title}
-                                className="w-full h-48 object-cover rounded-lg"
-                            />
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-lg font-semibold text-center text-black mt-2">
-                                    {meal.title}
-                                </h3>                                                                              
-                                <p className="text-orange-500 font-bold text-center text-x1"> 
-                                    ${meal.price !== undefined ? `$${meal.price.toFixed(2)}` : "Price not available"}
-                                </p>
-                            </div>
-                            {hoveredId === meal.id && (
-                                <div className="text-center mt-2">
-                                    <button
-                                        className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
-                                        onClick={(e) => {
+                                sx={{ height: 180, objectFit: "cover" }}
+                                />
+                                <CardContent sx={{ flexGrow: 1 }}>
+                                    <Typography variant="h6" align="center" color="textPrimary">
+                                        {meal.title}
+                                    </Typography>
+                                    <Typography variant="subtitle1" align="center" color="warning.main" fontWeight="bold">
+                                        ${meal.price?.toFixed(2)}
+                                    </Typography>
+                                </CardContent>
+                                {hoveredId === meal.id && (
+                                    <CardActions sx={{ flexDirection: "column", alignItems: "center" }}>
+                                        <Button variant="contained" color="inherit" size="small"
+                                            onClick={(e) => {
                                             e.preventDefault();
                                             e.stopPropagation();
                                             addToCart({
@@ -129,19 +149,19 @@ const Home = () => {
                                             });
                                             setShowCart(true);
                                         }}
-                                    >
-                                        Add to Cart
-                                    </button>
-                                    <p className="text-gray-600 text-sm mt-1">
-                                        <strong>Ingredients:</strong> {" "}
-                                        {meal.ingredients.join(", ")}
-                                    </p>
-                              </div>
-                          )}                         
-                        </div>
-                    </Link>
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                        <Typography variant="caption" color="textSecondary" mt={1}>
+                                            <strong>Ingredients:</strong> {meal.ingredients.join(", ")}
+                                        </Typography>
+                                    </CardActions>
+                                )}
+                            </Card>
+                        </Link>
+                    </Grid>                   
                 ))}
-            </div>            
+            </Grid>            
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { Box, Typography, Button, Grid } from "@mui/material";
 
 
 const Checkout = () => {
@@ -17,77 +18,51 @@ const Checkout = () => {
 
     if (cart.items.length === 0) {
         return (
-          <div style={{ padding: "2rem" }}>
-            <h1>Checkout</h1>
-            <p>Your cart is empty. <Link to="/menu">Go to Menu</Link> to add items!</p>         
-          </div>        
+          <Box p={4}>
+                <Typography variant="h4" gutterBottom>Checkout</Typography>
+                <Typography>Your cart is empty. <Link to="/menu">Go to Menu</Link> to add items!</Typography>
+            </Box>
         );
     }
 
     return (
-      <div style={{ padding: "2rem" }}>
-        <h1>Checkout</h1>
-        <h2>Your Order</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "1rem",
-          }}
-        >
-            {cart.items.map((item) => (
-                <div
-                  key={item.id}
-                  style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "10px",
-                    padding: "1rem",
-                    backgroundColor: "#fff5ee",
-                  }}
-                >
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    style={{ width: "100%", borderRadius: "8px" }}
-                    />
-                    <h3>{item.title}</h3>
-                    <p><strong>Price:</strong> ${item.price}</p>
-                    <p><strong>Quantity:</strong> {item.quantity}</p>
-                    <p><strong>Subtotal:</strong> ${(item.price * item.quantity). toFixed(2)}</p>
-                </div>
-            ))}
-        </div>
-        <div style={{ marginTop: "2rem "}}>
-            <p><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</p>
-            <button
-              style={{
-                padding: "1rem 2rem",
-                backgroundColor: "#000",
-                color: "#fff",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-              }}
-              onClick={handleCheckout}              
-            >
-                Confirm Order
-            </button>
-            <Link to="/cart" style={{ marginLeft: "1rem "}}>
-              <button
-                style={{
-                padding: "1rem 2rem",
-                backgroundColor: "#000",
-                color: "#fff",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-                }}
-              >
-                <span>←</span> Back to Cart
-              </button>
-            </Link> 
-        </div>        
-      </div>        
+        <Box p={4}>
+            <Typography variant="h4" gutterBottom>Checkout</Typography>
+            <Typography variant="h5" gutterBottom>Your Order</Typography>
+            <Grid container spacing={2}>
+                {cart.items.map(item => (
+                    <Grid item xs={12} sm={6} md={4} key={item.id}>
+                        <Box
+                            bgcolor="#fff5ee"
+                            borderRadius={2}
+                            p={2}
+                            border="1px solid #ccc"
+                        >
+                            <img
+                                src={item.thumbnail}
+                                alt={item.title}
+                                style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }}
+                            />
+                            <Typography variant="h6">{item.title}</Typography>
+                            <Typography><strong>Price:</strong> ${item.price.toFixed(2)}</Typography>
+                            <Typography><strong>Quantity:</strong> {item.quantity}</Typography>
+                            <Typography><strong>Subtotal:</strong> ${(item.price * item.quantity).toFixed(2)}</Typography>
+                        </Box>
+                    </Grid>
+                ))}
+            </Grid>
+            <Box mt={4} display="flex" alignItems="center" gap={2}>
+                <Typography variant="h6"><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</Typography>
+                <Button variant="contained" color="primary" onClick={handleCheckout}>
+                    Confirm Order
+                </Button>
+                <Link to="/cart" style={{ textDecoration: "none" }}>
+                    <Button variant="outlined" color="primary">
+                        ← Back to Cart
+                    </Button>
+                </Link>
+            </Box>
+        </Box>
     );
 };
 
