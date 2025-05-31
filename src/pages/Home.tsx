@@ -1,42 +1,35 @@
 import { useEffect, useState } from "react";
 import sushiData from "../data/sushiData.json";
 import { Link } from "react-router-dom";
-import { fetchProducts } from "../api/products";
 import { useCart } from "../context/CartContext";
 import { useSearch } from "../hooks/useSearch";
 import { type SushiItem } from "../types/cartTypes";
+import { useFetch } from "../hooks/useFetch";
 
 
-const Menu = () => {
-    const [meals, setMeals] = useState<SushiItem[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+
+const Home = () => {
+    const [meals, setMeals] = useState<SushiItem[]>([]);   
     const [hoveredId, setHoveredId] = useState<number | null>(null);
     const { addToCart, setShowCart } = useCart();    
     const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, filteredItems } = useSearch(meals);
     
     const categories = ["Most Ordered", "Sushi", "Roll", "Soup", "Dessert"];
     
-    useEffect (() => {
-        async function loadData() {
-            try {
-                const products = await fetchProducts();                
-                const sushiMock = sushiData.map((dish, index) => ({
-                    ...dish,
-                    price: products[index]?.price ?? 10,
-                }));
+    const { data: productPrices, loading,error } = useFetch<any[]>("https://dummyjson.com/products");
+    
+    useEffect(() => {
+        if (!productPrices) return;
 
-                setMeals(sushiMock as SushiItem[]);
-            } catch (err) {
-                setError("Failed to load sushi menu 😔");
-            } finally {
-                setLoading(false);
-            }        
-        }
-        loadData();
-    }, []);
+        const sushiMock = sushiData.map((dish, index) => ({
+            ...dish,
+            price: productPrices[index]?.price && 10,            
+        }));
 
-    if (error) return <p className="text-red-500">{error}</p>;
+        setMeals(sushiMock as SushiItem[]);
+    }, [productPrices]);
+
+    if (error) return <p className="text-red-500">Failed to load sushi menu 😔</p>;
     if (loading) return <p className="text-gray-600">Loading sushi menu...</p>;
     
     return (
@@ -136,4 +129,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Home;
