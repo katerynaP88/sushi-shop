@@ -1,6 +1,22 @@
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { Modal, Box, Typography, Button, IconButton, Stack, Divider } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
+
+const modalStyle = {
+  position: "absolute" as const,
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  maxHeight: "80vh",
+  overflowY: "auto",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  borderRadius: 2,
+  p: 4,
+};
 
 const CartPopup = () => {
     const { cart, removeFromCart, updateQuantity, showCart, setShowCart } = useCart();
@@ -13,81 +29,98 @@ const CartPopup = () => {
     if (!showCart) return null;
 
     return(
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg w-11/12 max-w-md max-h-[80vh] overflou-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2x1 font-bold">Your Cart</h2>
-              <button
-                  className="text-gray-500 hover:text-grey-700"
+        <Modal open={showCart} onClose={() => setShowCart(false)}>
+          <Box sx={modalStyle}>
+            <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
+            <Typography variant="h6" fontWeight="bold">
+                 Your Cart
+            </Typography>
+            <IconButton onClick={() => setShowCart(false)}>
+              <CloseIcon />
+            </IconButton>
+              </Stack>
+              {cart.items.length === 0 ? (
+                <>
+              <Typography color="text.secondary">Your cart is empty.</Typography>
+              <Button
+                  variant="outlined"
+                  fullWidth
+                  sx={{ mt: 3 }}
                   onClick={() => setShowCart(false)}
               >
-                  ⨉
-              </button>
-            </div>                
-            {cart.items.length === 0 ? (
-                <div>
-                  <p className="text-gray-600">Your cart is empty.</p>
-                  <button 
-                    className="mt-4 px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
-                    onClick={() => setShowCart(false)}
-                  >
-                    Close
-                  </button>
-                </div>
-            ) : (                    
-                <>
-                  {cart.items.map((item) => (
-                      <div key={item.id} className="flex items-center mb-4">                                              
-                        <img
-                            src={item.thumbnail}
-                            alt={item.title}
-                            className="w-24 h-24 rounded-lg mr-4 object-cover"
-                        />
-                            <div className="flex-1">
-                                <h4 className="text-lg font-semibold">{item.title}</h4>
-                                <p className="text-gray-600">${item.price.toFixed(2)} x {item.quantity}</p>
-                                <div className="flex gap-2 mt-2">
-                                    <button
-                                      className="px-2 py-1 bg-black text-white rounded hover:bg-gray-800"
-                                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                    >
-                                        -
-                                    </button>
-                                    <button
-                                      className="px-2 py-1 bg-black text-white rounded hover:bg-gray-800"
-                                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                    >
-                                        +
-                                    </button>
-                                    <button
-                                      className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                      onClick={() => removeFromCart(item.id)}
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    <p className="text-lg font-bold">Total: ${totalPrice.toFixed(2)}</p>
-                    <div className="flex gap-4 mt-4">
-                      <Link to="/cart">
-                        <button
-                          className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
-                            Go to Cart
-                        </button>
-                      </Link>
-                      <button
-                        className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+                Close
+              </Button>
+                 </>
+            ) : (
+                 <>
+                {cart.items.map((item) => (
+                <Box key={item.id} display="flex" gap={2} mb={2} alignItems="center">
+                    <Box
+                        component="img"
+                        src={item.thumbnail}
+                        alt={item.title}
+                        sx={{ width: 80, height: 80, borderRadius: 2, objectFit: "cover" }}
+                    />
+                    <Box flex={1}>
+                      <Typography fontWeight="bold">{item.title}</Typography>
+                      <Typography color="text.secondary">
+                        ${item.price.toFixed(2)} × {item.quantity}
+                      </Typography>
+                      <Stack direction="row" spacing={1} mt={1}>
+                        <Button
+                            variant="contained"
+                            size="small"
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        >
+                          -
+                        </Button>
+                        <Button
+                            variant="contained"
+                            size="small"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        >
+                          + 
+                        </Button>
+                        <Button
+                            variant="contained"
+                            color="error"
+                            size="small"
+                            onClick={() => removeFromCart(item.id)}
+                        >
+                          Remove
+                       </Button>
+                      </Stack>
+                    </Box>
+                  </Box>
+                ))}
+                
+                <Divider sx={{ my: 2 }} />
+                <Typography fontWeight="bold" variant="subtitle1">
+                    Total: ${totalPrice.toFixed(2)}
+                </Typography>
+
+                <Stack direction="row" spacing={2} mt={3}>
+                    <Button
+                        variant="contained"
+                        fullWidth
+                        component={Link}
+                        to="/cart"
                         onClick={() => setShowCart(false)}
-                      >
-                          Close                          
-                      </button>     
-                    </div>
-                  </>
-                )}
-            </div>
-        </div>
+                    > 
+                      Go to Cart
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        fullWidth
+                        onClick={() => setShowCart(false)}
+                    >
+                      Close
+                    </Button>
+                  </Stack>
+                </>
+              )}
+          </Box>
+      </Modal>
     );
 };
 
