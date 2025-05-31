@@ -7,7 +7,7 @@ A modern sushi delivery store built with **React**, **TypeScript**, and **Vite**
 - React
 - TypeScript
 - Vite
-- Tailwind CSS
+- Material UI (MUI)
 - React Router
 - React Hook Form
 - Context API
@@ -15,10 +15,11 @@ A modern sushi delivery store built with **React**, **TypeScript**, and **Vite**
 
 ## Features
 
-- Browse sushi menu with search and categories
+- Browse sushi menu with filtering
 - View product details
-- Add items to cart
-- Login/register via modal
+- Add/remove items in the cart
+- Update item quantity
+- Modal login/register
 - Responsive design
 
 
@@ -78,5 +79,6 @@ npm run build
 ```bash
 npm run test
 ```
+## 📄 Presentation
 
 Feel free to contribute or customize the app to your needs!

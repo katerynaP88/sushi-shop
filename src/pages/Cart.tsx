@@ -1,10 +1,8 @@
 import React from 'react';
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { Drawer, Box, Grid, List, ListItem, ListItemText, IconButton, Typography, Button } from '@mui/material';
+import { Box, Grid, Typography, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
-
 
 
 const Cart = () => {
@@ -55,10 +53,10 @@ const Cart = () => {
               <Box mt={4}>
                 <Typography variant="h6"><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</Typography>
                 <Box mt={2} display="flex" gap={2}>
-                    <Button variant="contained" color="error" onClic onClick={clearCart}>
+                    <Button variant="contained" color="error" onClick={clearCart}>
                         Clear Cart
                     </Button>
-                    <Link to="/checkout" style={{ textDecoration: 'none' }}>
+                    <Link to="/checkout" style={{ textDecoration: "none"}}>
                         <Button variant="contained" color="primary">
                             Proceed to Checkout
                         </Button>
@@ -69,5 +67,5 @@ const Cart = () => {
             );
           };
           
-          
+
 export default Cart;

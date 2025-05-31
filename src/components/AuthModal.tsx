@@ -1,7 +1,11 @@
-import { useState } from "react";
-import {useForm, type SubmitHandler } from "react-hook-form";
+import React, { useState } from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Modal, Box, Typography, TextField, Button, Stack, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+
+
 
 type FormInputs = {
     email: string;
@@ -34,81 +38,90 @@ const AuthModal = () => {
     if (!showAuthModal) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg w-11/12 max-w-md">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-bold">{isLogin ? "Login" : "Register"}</h2>
-                    <button className="text-gray-500 hover:text-gray-700" onClick={() => setShowAuthModal(false)}
-                        >
-                        ⨉
-                    </button>
-                </div>
-                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-                    {!isLogin && (
-                        <div>
-                            <label className="block text-gray-700">Name</label>
-                            <input
-                                type="text"
-                                {...register("name", {
-                                    required: !isLogin && "Name is required",
-                                })}
-                                className="w-full p-2 border border-gray-300 rounded"
-                            />
-                            {errors.name && (
-                                <p className="text-red-500 text-sm">{errors.name.message}</p>
-                            )}                           
-                        </div>
-                    )}
-                    <div>
-                        <label className="block text-gray-700">Email</label>
-                        <input
-                            type="email"
-                            {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: "Invalid email address",
-                                },
-                            })}
-                            className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.email && (
-                            <p className="text-red-500 text-sm">{errors.email.message}</p>
-                        )}
-                    </div>
-                    <div>
-                        <label className="block text-gray-700">Password</label>
-                        <input
-                            type="password"
-                            {...register("password", {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 6,
-                                        message: "Password must be at leatest 6 characters",
-                                    },
-                                })}
-                                className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.password && (
-                                <p className="text-red-500 text-sm">{errors.password.message}</p>
-                            )} 
-                    </div>
-                    <button
-                        type="submit" 
-                        className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
-                    >
-                        {isLogin ? "Login" : "Register"}
-                    </button>
-                </form>
-                <button
-                    type="button"
-                    className="mt-2 text-orange-500 hover:underline"
-                    onClick={() => setIsLogin(!isLogin)}
-                >       
-                    {isLogin ? "Need an account? Register" : "Already have an account? Loin"}
-                    </button>                
-            </div>
-        </div>
+        <Modal open={showAuthModal} onClose={() => setShowAuthModal(false)}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          p: 4,
+          borderRadius: 2,
+          width: "90%",
+          maxWidth: 400,
+          mx: "auto",
+          mt: "10vh",
+          position: "relative",
+        }}
+      >
+        <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
+          <Typography variant="h5" fontWeight="bold">
+            {isLogin ? "Login" : "Register"}
+          </Typography>
+          <IconButton onClick={() => setShowAuthModal(false)}>
+            <CloseIcon />
+          </IconButton>
+        </Stack>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={2}>
+            {!isLogin && (
+              <TextField
+                label="Name"
+                {...register("name", {
+                  required: !isLogin && "Name is required",
+                })}
+                error={!!errors.name}
+                helperText={errors.name?.message}
+                fullWidth
+              />
+            )}
+
+            <TextField
+              label="Email"
+              type="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email address",
+                },
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+              fullWidth
+            />
+
+            <TextField
+              label="Password"
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              fullWidth
+            />
+
+            <Button type="submit" variant="contained" color="warning" fullWidth>
+              {isLogin ? "Login" : "Register"}
+            </Button>
+
+            <Button
+              onClick={() => setIsLogin(!isLogin)}
+              variant="text"
+              color="warning"
+              sx={{ textTransform: "none" }}
+            >
+              {isLogin
+                ? "Need an account? Register"
+                : "Already have an account? Login"}
+            </Button>
+          </Stack>
+        </form>
+      </Box>
+    </Modal>
     );    
 };
 
