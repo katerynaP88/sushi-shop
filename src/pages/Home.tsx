@@ -21,9 +21,12 @@ const Home = () => {
     useEffect(() => {
         if (!productPrices) return;
 
+        console.log("Product price from API:", productPrices);
+        console.log("Sushi data length:", sushiData.length);
+
         const sushiMock = sushiData.map((dish, index) => ({
             ...dish,
-            price: productPrices[index]?.price && 10,            
+            price: productPrices[index]?.price ?? 10,            
         }));
 
         setMeals(sushiMock as SushiItem[]);
@@ -53,7 +56,7 @@ const Home = () => {
                   placeholder="Search for sushi..."
                   value={searchQuery}
                   onChange={ (e) => setSearchQuery(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lgfocus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
                 <span
                     className="text-2xl ml-2 cursor-pointer hover:text-orange-500"
@@ -93,7 +96,7 @@ const Home = () => {
                                     {meal.title}
                                 </h3>                                                                              
                                 <p className="text-orange-500 font-bold text-center text-x1"> 
-                                    ${meal.price.toFixed(2)}
+                                    ${meal.price !== undefined ? `$${meal.price.toFixed(2)}` : "Price not available"}
                                 </p>
                             </div>
                             {hoveredId === meal.id && (
