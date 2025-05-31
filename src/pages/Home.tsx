@@ -5,6 +5,9 @@ import { useCart } from "../context/CartContext";
 import { useSearch } from "../hooks/useSearch";
 import { type SushiItem } from "../types/cartTypes";
 import { useFetch } from "../hooks/useFetch";
+import { Box, Typography, Container, TextField, IconButton, Grid, Button, Paper } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 
@@ -37,34 +40,45 @@ const Home = () => {
     
     return (
         <div className="p-4">
-            <div 
-                className="h-64 bg-cover bg-center flex flex-col justify-center items-center text-white"
-                style={{ backgroundImage: `url(/"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2e_IFUOvw9nzdD45qUyATaSpRA8170E91Tg&s")`}}
-            >
-                <h1 className="text-4x1 font-bold">Discover Our Sushi</h1>
-                <p className="text-x1 mt-2">Discover the freshest and most delicious sushi dishes made just for you.</p>
-            </div>
-            <div className="mt-6 flex items-center max-w-md mx-auto">
-               <span 
-                    className="text-2x1 mr-2 cursor-pointer hover:text-orange-500"
-                    onClick={() => document.querySelector("input")?.focus()}
-                    >
-                      🔍
-                </span>
-                <input
-                  type="text"
-                  placeholder="Search for sushi..."
-                  value={searchQuery}
-                  onChange={ (e) => setSearchQuery(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                />
-                <span
-                    className="text-2xl ml-2 cursor-pointer hover:text-orange-500"
-                    onClick={() => setShowCart(true)}
-                >
-                    🛒
-                </span>                
-            </div>            
+            <Box
+  sx={{
+    height: 250,
+    backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2e_IFUOvw9nzdD45qUyATaSpRA8170E91Tg&s")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    textAlign: 'center',
+    px: 2,
+  }}
+>
+  <Typography variant="h4" fontWeight="bold">
+    Discover Our Sushi
+  </Typography>
+  <Typography variant="body1" mt={1}>
+    Discover the freshest and most delicious sushi dishes made just for you.
+  </Typography>
+</Box>
+            <Container maxWidth="sm" sx={{ mt: 4, display: 'flex', alignItems: 'center' }}>
+  <IconButton onClick={() => document.querySelector('input')?.focus()}>
+    <SearchIcon />
+  </IconButton>
+  <TextField
+    fullWidth
+    placeholder="Search for sushi..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    variant="outlined"
+    size="small"
+    sx={{ mx: 1 }}
+  />
+  <IconButton onClick={() => setShowCart(true)}>
+    <ShoppingCartIcon />
+  </IconButton>
+</Container>            
             <div className="mt-4 flex gap-2 justify-center flex-wrap">
                 {categories.map((category) => (
                     <button 
