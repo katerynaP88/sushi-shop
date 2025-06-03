@@ -1,5 +1,19 @@
 {
-  "files": [],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "isolatedModules": true,
+    "strict": true,
+    "composite": true,
+    "outDir": "./dist",  // или любая папка для вывода
+    "noEmit": false,
+    "skipLibCheck": true
+  },
+  "include": ["src", "jest.setup.ts"],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

@@ -17,9 +17,11 @@ const config: Config = {
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   globals: {
     "ts-jest": {
-      useESM: true
+      useESM: true,
+      tsconfig: './tsconfig.json',
     }
-  }
+  },
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
 
 export default config;
