@@ -41,7 +41,7 @@ const AuthModal = () => {
         <Modal open={showAuthModal} onClose={() => setShowAuthModal(false)}>
       <Box
         sx={{
-          backgroundColor: "white",
+          backgroundColor: "gray",
           p: 4,
           borderRadius: 2,
           width: "90%",
@@ -63,7 +63,7 @@ const AuthModal = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
             {!isLogin && (
-              <TextField
+              <TextField 
                 label="Name"
                 {...register("name", {
                   required: !isLogin && "Name is required",
@@ -102,6 +102,7 @@ const AuthModal = () => {
               error={!!errors.password}
               helperText={errors.password?.message}
               fullWidth
+              
             />
 
             <Button type="submit" variant="contained" color="warning" fullWidth>
