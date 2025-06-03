@@ -74,11 +74,26 @@ npm run build
 
 ```
 
-## Test
+## 🧪 Testing
+
+This project uses **Jest** and **React Testing Library**.
+
+### How to run tests
 
 ```bash
 npm run test
 ```
+Test coverage includes:
+
+Modal behavior (AuthModal)
+
+Form interaction
+
+UI component rendering
+
+
 ## 📄 Presentation
+
+
 
 Feel free to contribute or customize the app to your needs!
