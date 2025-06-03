@@ -1,3 +1,7 @@
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
+import Fab from '@mui/material/Fab';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useCart } from "../context/CartContext";
 
 
