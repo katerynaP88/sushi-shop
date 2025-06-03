@@ -83,13 +83,13 @@ This project uses **Jest** and **React Testing Library**.
 ```bash
 npm run test
 ```
-Test coverage includes:
+## Test coverage includes:
 
-Modal behavior (AuthModal)
+- Modal component (AuthModal)
 
-Form interaction
+- Basic user interaction with forms (e.g., user events)
 
-UI component rendering
+- Setup file: src/setupTests.ts
 
 
 ## 📄 Presentation
