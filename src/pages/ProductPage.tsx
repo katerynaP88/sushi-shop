@@ -29,6 +29,10 @@ const ProductPage = () => {
                 setItem({
                     ...localData,
                     price: apiData.price ?? 10,
+                    nutrition: {
+                        ...localData.nutrition,
+                        carbohydrates: localData.nutrition.carbs,
+                    },
                 } as SushiItem);
                 } catch (err) {
                     setError("Failed to fetch product");
