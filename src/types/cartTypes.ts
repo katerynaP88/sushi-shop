@@ -19,4 +19,10 @@ export interface SushiItem {
     ingredients: string[];
     isPopular: boolean;
     price: number;
+    nutrition?: {
+    calories: number;
+    protein: string;
+    fat: string;
+    carbohydrates: string;
+  };
 }
