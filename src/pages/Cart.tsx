@@ -1,71 +1,76 @@
 import React from 'react';
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
-import { Box, Grid, Typography, Button } from '@mui/material';
+import { Link, useNavigate } from "react-router-dom";
+import { Box, Typography, Button, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 
 
-const Cart = () => {
-    const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
 
+const Cart = () => {
+    const { cart, removeFromCart, updateQuantity } = useCart();
     const totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     if (cart.items.length === 0) {
         return (
-            <Box p={4}>
-              <Typography variant="h4" gutterBottom>Your Cart</Typography>
-              <Typography>Your cart is empty. <Link to="/menu">Go to Menu</Link> to add items!</Typography>
+            <Box p={4} sx={{ backgroundColor: 'black', color: 'white', minHeight: '80vh' }}>
+                <Typography variant="h4" gutterBottom>Your Cart</Typography>
+                <Typography>Your cart is empty. <Link to="/menu" style={{color: '#90caf9'}}>Go to Menu</Link> to add items!</Typography>
             </Box>
         );
     }
 
     return (
-        <Box p={4}>
-              <Typography variant="h4" gutterBottom>Your Cart</Typography>
-              <Grid container spacing={2}>
-                  {cart.items.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} key={item.id}>
-                      <Box
-                        bgcolor="#fff5ee"
-                        borderRadius={2}
-                        p={2}
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                      >
-                        <img
-                          src={item.thumbnail}
-                          alt={item.title}
-                          style={{ width: "100%", borderRadius: "8px", marginBottom: '1rem' }}
-                        />
-                        <Typography  variant="h6">{item.title}</Typography>
-                        <Typography><strong>Price:</strong> ${item.price.toFixed(2)}</Typography>
-                        <Typography><strong>Quantity:</strong> (item.quantity)</Typography>
-                        <Box mt={1} display="flex" gap={1}>
-                          <Button variant="contained" size="small" onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
-                          <Button variant="contained" size="small" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</Button>
-                          <Button variant="contained" size="small" color="error" onClick={() => removeFromCart(item.id)}>Remove</Button>
-                        </Box>                        
-                      </Box>
-                    </Grid>
-                ))}
-              </Grid>
-              <Box mt={4}>
-                <Typography variant="h6"><strong>Total Price:</strong> ${totalPrice.toFixed(2)}</Typography>
-                <Box mt={2} display="flex" gap={2}>
-                    <Button variant="contained" color="error" onClick={clearCart}>
-                        Clear Cart
-                    </Button>
-                    <Link to="/checkout" style={{ textDecoration: "none"}}>
-                        <Button variant="contained" color="primary">
-                            Proceed to Checkout
-                        </Button>
-                    </Link>
+        <Box p={4} sx={{ backgroundColor: 'black', color: 'white', minHeight: '80vh' }}>
+            <Typography variant="h4" gutterBottom>Your Cart</Typography>
+            {cart.items.map((item) => (
+                <Box key={item.id} display="flex" alignItems="center" mb={2} sx={{ borderBottom: '1px solid #444', pb: 2 }}>
+                    <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        style={{ width: 120, height: 120, objectFit: 'cover', borderRadius: 8, marginRight: 16 }}
+                    />
+                    <Box flex="1">
+                        <Typography variant="h6">{item.title}</Typography>
+                        <Typography>Price: ${item.price.toFixed(2)}</Typography>
+                        <Box display="flex" alignItems="center" mt={1}>
+                            <Button variant="contained" size="small" onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
+                            <Typography mx={2}>{item.quantity}</Typography>
+                            <Button variant="contained" size="small" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</Button>
+                        </Box>
+                    </Box>
+                    <IconButton onClick={() => removeFromCart(item.id)} color="error" aria-label="remove item">
+                        <CloseIcon />
+                    </IconButton>
                 </Box>
-              </Box>
-            </Box>               
-            );
-          };
+            ))}
+
+            <Box mt={4} display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={2}>
+                <Typography variant="h6">Total: ${totalPrice.toFixed(2)}</Typography>
+                <Box>
+                    <Button 
+                        variant="outlined" 
+                        startIcon={<ArrowBackIcon />} 
+                        component={Link} 
+                        to="/menu" 
+                        sx={{ mr: 2, color: 'white', borderColor: 'white' }}
+                    >
+                        Back to Menu
+                    </Button>
+                    <Button 
+                        variant="contained" 
+                        color="primary"
+                        onClick={() => navigate('/checkout')}
+                    >
+                        Confirm Order
+                    </Button>
+                </Box>
+            </Box>
+        </Box>
+    );
+  };
           
 
 export default Cart;
+
+
