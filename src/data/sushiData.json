@@ -6,7 +6,12 @@
         "thumbnail": "https://media.istockphoto.com/id/640079966/photo/salmon-sushi-nigiri-on-a-black-plate-with-chopsticks.jpg?s=612x612&w=0&k=20&c=V_6xS1t1ilAeFNzvyX-CcRMv_H6y_1LqqgYn3Prr8Rw=",
         "description": "Freshly sliced salmon on a bed of perfectly seasoned rice. A classic favorite!",
         "ingredients": ["Salmon", "Rice", "Soy Sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+        "calories": 220,
+        "protein": "12g",
+        "fat": "4g",
+        "carbs": "28g"}         
     },
     {
        "id": 2,
@@ -15,7 +20,13 @@
         "thumbnail": "https://usakor.com/jayskitchen/wp-content/uploads/sites/157/2020/07/Tuna-Roll-3-1920x1281.jpg",
         "description": "Delicious tuna wrapped in soft rice and crispy seaweed. A must-try roll!",
         "ingredients": ["sushi rice", "nori (seaweed)", "raw tuna", "wasabi", "soy sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 220,
+            "protein": "12g",
+            "fat": "4g",
+            "carbs": "28g"
+        }
     },
     {
         "id": 3,
@@ -24,7 +35,13 @@
         "thumbnail": "https://purpleavocado.de/wp-content/uploads/2015/11/Miso-soup-1.jpg",
         "description": "Warm and savory miso broth with tofu, seaweed, and scallions. Comfort in a bowl.",
         "ingredients": ["miso paste", "dashi broth", "tofu", "wakame seaweed", "green onions"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 250,
+            "protein": "14g",
+            "fat": "3g",
+            "carbs": "35g"
+        }
     },
     {
         "id": 4,
@@ -33,7 +50,13 @@
         "thumbnail": "https://mim.p7s1.io/pis/ld/89f2zChLCVyZ-c1vEwXZAanB-DJ78rnq2V2gRWTHzVV6NywNWMSJCEGmZ4YSENP-WRL0b9lo2z_IfGOSZaMRUYiR16XBQyLIQxaY6URk3ChOz0YNksv-_e4NFr0_a2_sNapSebl9G7Q/profile:original?w=1070",
         "description": "Chewy mochi balls filled with creamy ice cream. A sweet Japanese delight.",
         "ingredients": ["glutinous rice flour", "sugar", "water", "cornstarch (for dusting)", "sweet red bean paste (anko)"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 200,
+            "protein": "2g",
+            "fat": "4g",
+            "carbs": "38g"
+        }
     },
      {
         "id": 5,
@@ -42,7 +65,13 @@
         "thumbnail": "https://143267251.cdn6.editmysite.com/uploads/1/4/3/2/143267251/R47HLU363AXZ4TZF73QQPCO4.jpeg",
         "description": "Smooth avocado with fresh rice and crisp seaweed. Light and tasty!",
         "ingredients": ["sushi rice", "nori (seaweed)", "avocado", "wasabi", "soy sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 180,
+            "protein": "3g",
+            "fat": "6g",
+            "carbs": "28g"
+        }
     },
     {
         "id": 6,
@@ -51,7 +80,13 @@
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQv7-CYqqR9DDpMxk5wWMo6kqPLTsW71ZcQtK0dfgbwhJZH83ls707THZKL1EAzsORVZM&usqp=CAU",
         "description": "Tender shrimp over seasoned sushi rice, finished with a touch of wasabi.",
         "ingredients": ["shrimp", "sushi rice", "wasabi", "soy sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 190,
+            "protein": "10g",
+            "fat": "2g",
+            "carbs": "26g"
+        }
     },
     {
         "id": 7,
@@ -60,7 +95,13 @@
         "thumbnail": "https://www.kuechengoetter.de/uploads/media/1800x1200/08/71768-tamago-nigiri-0.jpg?v=2-18",
         "description": "Sweet Japanese omelet laid over rice and wrapped with a nori strip.",
         "ingredients": ["tamago (sweet omelet)", "sushi rice", "nori", "soy sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 200,
+            "protein": "6g",
+            "fat": "5g",
+            "carbs": "30g"
+        }
     },
     {
         "id": 8,
@@ -69,7 +110,13 @@
         "thumbnail": "https://www.easyrecipesy.com/storage/posts_photo/sushi-unagi-nigiri-a-comprehensive-guide-to-mastering-unagi-nigiri-at-home-1726526728.webp",
         "description": "Grilled eel glazed with sweet soy sauce on a rice bed. Rich and savory!",
         "ingredients": ["grilled eel", "sushi rice", "unagi sauce", "nori"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 260,
+            "protein": "12g",
+            "fat": "8g",
+            "carbs": "32g"
+        }
     },
     {
         "id": 9,
@@ -78,7 +125,13 @@
         "thumbnail": "https://chefjacooks.com/wp-content/uploads/2023/04/inari-sushi-obento-square.jpg",
         "description": "Sweet tofu pockets filled with seasoned sushi rice. Vegan-friendly delight.",
         "ingredients": ["seasoned rice", "fried tofu skin (aburaage)", "sesame seeds"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 170,
+            "protein": "4g",
+            "fat": "3g",
+            "carbs": "30g"
+        }
     },
     {
         "id": 10,
@@ -87,7 +140,13 @@
         "thumbnail": "https://homedining.shop/cdn/shop/files/HAMACHINIGIRI_fe29a5a9-97e6-4091-b980-2d59fbf8d4ba.png?v=1720469487",
         "description": "Yellowtail sashimi over a perfectly formed rice base. Light and buttery.",
         "ingredients": ["yellowtail", "sushi rice", "wasabi"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 230,
+            "protein": "13g",
+            "fat": "5g",
+            "carbs": "28g"
+        }
     },
     {
         "id": 11,
@@ -96,7 +155,13 @@
         "thumbnail": "https://thumbs.dreamstime.com/b/ikura-gunkan-maki-salmon-roe-gunkan-sushi-ikura-gunkan-maki-salmon-roe-gunkan-sushi-sushi-menu-japanese-food-123012213.jpg",
         "description": "Seaweed-wrapped rice topped with luscious salmon roe. A burst of ocean flavor.",
         "ingredients": ["sushi rice", "nori", "salmon roe (ikura)"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 210,
+            "protein": "8g",
+            "fat": "6g",
+            "carbs": "27g"
+        }
     },
     {
         "id": 12,
@@ -105,7 +170,13 @@
         "thumbnail": "https://www.kurzyatac.cz/data/recept/sushi-california-roll-s-lososem-467.jpg",
         "description": "Crab stick, avocado, and cucumber wrapped in rice and seaweed. A Western classic!",
         "ingredients": ["sushi rice", "nori", "crab stick", "avocado", "cucumber"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 240,
+            "protein": "6g",
+            "fat": "7g",
+            "carbs": "36g"
+        }
     },
     {
         "id": 13,
@@ -114,7 +185,13 @@
         "thumbnail": "https://popmenucloud.com/cdn-cgi/image/width=1200,height=630,format=auto,fit=cover/ozsqwtvc/f8f3eebc-075a-4eb3-9fe9-e23ea30ff8a5.jpg",
         "description": "Fresh tuna mixed with spicy mayo, rolled in seaweed and rice.",
         "ingredients": ["sushi rice", "nori", "tuna", "spicy mayo", "green onion"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 270,
+            "protein": "12g",
+            "fat": "8g",
+            "carbs": "34g"
+        }
     },
     {
         "id": 14,
@@ -123,7 +200,13 @@
         "thumbnail": "https://www.mashed.com/img/gallery/philadelphia-roll-what-you-should-know-before-ordering-upgrade/intro-1621611221.jpg",
         "description": "Cream cheese, salmon, and cucumber make this roll smooth and savory.",
         "ingredients": ["sushi rice", "nori", "cream cheese", "smoked salmon", "cucumber"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 280,
+            "protein": "10g",
+            "fat": "10g",
+            "carbs": "35g"
+        }
     },
     {
         "id": 15,
@@ -132,7 +215,13 @@
         "thumbnail": "https://www.sushisushi.co.uk/cdn/shop/articles/Dragon_Rolls_520x500_520x500_67ebff70-1910-42d5-89f8-67d8d702f8cf.jpg?v=1740648780",
         "description": "Tempura shrimp and cucumber inside, topped with avocado and unagi sauce.",
         "ingredients": ["sushi rice", "nori", "tempura shrimp", "avocado", "unagi sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 300,
+            "protein": "8g",
+            "fat": "12g",
+            "carbs": "38g"
+        }
     },
     {
         "id": 16,
@@ -141,7 +230,13 @@
         "thumbnail": "https://maarsushi.com/cdn/shop/files/3906114_1685371500.webp?v=1688044002",
         "description": "Refreshing and crunchy cucumber wrapped in rice and seaweed. Simple and vegan.",
         "ingredients": ["sushi rice", "nori", "cucumber"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 150,
+            "protein": "2g",
+            "fat": "1g",
+            "carbs": "30g"
+        }
     },
     {
         "id": 17,
@@ -150,7 +245,13 @@
         "thumbnail": "https://homedining.shop/cdn/shop/files/TUNATEMPURAROLL_1200x1200.png?v=1720469814",
         "description": "Crispy shrimp tempura roll with spicy sauce and cucumber crunch.",
         "ingredients": ["sushi rice", "nori", "tempura shrimp", "cucumber", "spicy mayo"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 320,
+            "protein": "9g",
+            "fat": "14g",
+            "carbs": "40g"
+        }
     },
     {
         "id": 18,
@@ -159,7 +260,13 @@
         "thumbnail": "https://sudachirecipes.com/wp-content/uploads/2024/01/clear-soup-7.jpg",
         "description": "Light and savory broth with mushrooms and scallions. Simple and elegant.",
         "ingredients": ["dashi", "shiitake mushrooms", "green onions", "soy sauce"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 60,
+            "protein": "3g",
+            "fat": "1g",
+            "carbs": "8g"
+        }
     },
     {
         "id": 19,
@@ -168,7 +275,13 @@
         "thumbnail": "https://static.toiimg.com/thumb/imgsize-66074,msid-86340350,width-375,height-210,resizemode-75/86340350.jpg",
         "description": "Delicate seaweed floating in a clear, mineral-rich broth.",
         "ingredients": ["dashi", "wakame seaweed", "soy sauce", "tofu"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 70,
+            "protein": "4g",
+            "fat": "2g",
+            "carbs": "9g"            
+        }
     },
     {
         "id": 20,
@@ -177,7 +290,13 @@
         "thumbnail": "https://static01.nyt.com/images/2016/02/10/dining/10MARTHA/10MARTHA-superJumbo.jpg",
         "description": "A warming soup of tofu, mushrooms, and miso. Healthy and hearty.",
         "ingredients": ["miso paste", "shiitake mushrooms", "tofu", "green onions"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 90,
+            "protein": "6g",
+            "fat": "3g",
+            "carbs": "10g"
+        }
     },
     {
         "id": 21,
@@ -186,7 +305,13 @@
         "thumbnail": "https://www.wandercooks.com/wp-content/uploads/2019/04/udon-noodle-soup-recipe-ft-500x500.jpg",
         "description": "Thick udon noodles in a savory soy-based broth. Comfort food at its best.",
         "ingredients": ["udon noodles", "dashi", "soy sauce", "green onions"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 200,
+            "protein": "6g",
+            "fat": "2g",
+            "carbs": "35g"
+        }
     },
     {
         "id": 22,
@@ -195,7 +320,13 @@
         "thumbnail": "https://i.pinimg.com/736x/4f/d0/8d/4fd08d3c208555931a56f7928a01d319.jpg",
         "description": "Silky egg ribbons in a light, flavorful broth. A fusion favorite.",
         "ingredients": ["chicken broth", "egg", "cornstarch", "green onions"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 100,
+            "protein": "5g",
+            "fat": "3g",
+            "carbs": "12g"
+        }
     },
     {
         "id": 23,
@@ -204,7 +335,13 @@
         "thumbnail": "https://assets.bonappetit.com/photos/57ad09e5f1c801a1038bc995/1:1/w_2560%2Cc_limit/spicy-kimchi-tofu-stew.jpg",
         "description": "Bold flavors from kimchi and gochujang create a fiery, satisfying soup.",
         "ingredients": ["kimchi", "gochujang", "tofu", "pork", "green onions"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 150,
+            "protein": "8g",
+            "fat": "6g",
+            "carbs": "15g"
+        }
     },
     {
         "id": 24,
@@ -213,7 +350,13 @@
         "thumbnail": "https://t4.ftcdn.net/jpg/06/46/51/07/360_F_646510756_vkwQdkBqoEcYNKpquffDHdr0DckFhpkq.jpg",
         "description": "Chewy mochi filled with creamy matcha-flavored ice cream. Earthy and sweet.",
         "ingredients": ["glutinous rice flour", "sugar", "water", "matcha powder", "ice cream"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 220,
+            "protein": "3g",
+            "fat": "5g",
+            "carbs": "40g"
+        }
     },
     {
         "id": 25,
@@ -222,7 +365,13 @@
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKgqG7U-r3EagKK3iTR3Ss885LwHU_dfkPbWVKS1-pdGsR61pGUkbT3UqQZ72DO04Pmw&usqp=CAU",
         "description": "Sweet red bean paste sandwiched between fluffy pancakes. A Japanese classic!",
         "ingredients": ["flour", "sugar", "eggs", "red bean paste", "honey"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 250,
+            "protein": "5g",
+            "fat": "4g",
+            "carbs": "45g"
+        }
     },
     {
         "id": 26,
@@ -231,7 +380,13 @@
         "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnd5eVmByi2bNfhqq5r-P_bXUedK14VaC_tQ&s",
         "description": "Rich and creamy ice cream infused with premium matcha green tea.",
         "ingredients": ["milk", "cream", "sugar", "matcha powder", "egg yolk"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 280,
+            "protein": "4g",
+            "fat": "12g",
+            "carbs": "35g"
+        }
     },
     {
         "id": 27,
@@ -240,7 +395,13 @@
         "thumbnail": "https://www.justonecookbook.com/wp-content/uploads/2022/11/Anmitsu-5290-I-1.jpg",
         "description": "Traditional Japanese parfait with agar jelly, fruit, and sweet syrup.",
         "ingredients": ["agar agar", "fruit", "red bean paste", "sweet syrup", "ice cream"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 230,
+            "protein": "3g",
+            "fat": "5g",
+            "carbs": "42g"
+        }
     },
     {
         "id": 28,
@@ -249,7 +410,13 @@
         "thumbnail": "https://shop.haase-food.com/out/haasefood/cms/reportage_taiyaki_fisch.jpg",
         "description": "Fish-shaped pastry filled with sweet red bean or custard. Fun and delicious!",
         "ingredients": ["flour", "baking powder", "eggs", "milk", "red bean paste"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 260,
+            "protein": "6g",
+            "fat": "5g",
+            "carbs": "45g"
+        }
     },
     {
         "id": 29,
@@ -258,6 +425,12 @@
         "thumbnail": "https://vbfitfuel.com/wp-content/uploads/2024/05/IMG_0985.jpeg",
         "description": "Creamy Japanese-style cheesecake with a refreshing citrus twist of yuzu.",
         "ingredients": ["cream cheese", "sugar", "eggs", "yuzu juice", "biscuit base"],
-        "isPopular": true
+        "isPopular": true,
+        "nutrition": {
+            "calories": 300,
+            "protein": "6g",
+            "fat": "15g",
+            "carbs": "35g"
+        }
     }  
     ]

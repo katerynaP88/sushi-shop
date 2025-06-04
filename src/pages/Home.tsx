@@ -46,7 +46,7 @@ const Home = () => {
             <Box
   sx={{
     height: 250,
-    backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2e_IFUOvw9nzdD45qUyATaSpRA8170E91Tg&s")`,
+    backgroundImage: `url("https://img.freepik.com/free-photo/highly-detailed-seafood-sushi-dish-with-simple-black-background_23-2151349378.jpg?ga=GA1.1.249952370.1748535845&semt=ais_hybrid&w=740")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
@@ -100,15 +100,15 @@ const Home = () => {
                     </Button>
                 ))}
             </Stack>
-            <Grid container spacing={2} mt={2}>
+            <Grid container spacing={2} mt={2} alignItems="stretch">
                 {filteredItems.map((meal: SushiItem) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} key={meal.id}>
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={meal.id} sx={{ height: '100% '}}>
                         <Link to={`/product/${meal.id}`} style={{ textDecoration: "none" }}>
                             <Card 
                               onMouseEnter={() => setHoveredId(meal.id)}
                               onMouseLeave={() => setHoveredId(null)}
                               sx={{
-                                height: 360,
+                                height: "100%",
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "space-between",
@@ -118,13 +118,14 @@ const Home = () => {
                                     "&:hover": {
                                         borderColor: "#ff9800",
                                     },
+                                    width: "100%",
                               }}
                             >
                                 <CardMedia
                                 component="img"
                                 image={meal.thumbnail}
                                 alt={meal.title}
-                                sx={{ height: 180, objectFit: "cover" }}
+                                sx={{ height: "180px", objectFit: "cover" }}
                                 />
                                 <CardContent sx={{ flexGrow: 1 }}>
                                     <Typography variant="h6" align="center" color="textPrimary">
@@ -135,7 +136,8 @@ const Home = () => {
                                     </Typography>
                                 </CardContent>
                                 {hoveredId === meal.id && (
-                                    <CardActions sx={{ flexDirection: "column", alignItems: "center" }}>
+                                    <CardActions sx={{ flexDirection: "column", alignItems: "center", padding: "8px",
+                minHeight: "80px" }}>
                                         <Button variant="contained" color="inherit" size="small"
                                             onClick={(e) => {
                                             e.preventDefault();
