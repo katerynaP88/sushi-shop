@@ -25,6 +25,8 @@
     "noUncheckedSideEffectImports": true,
     "types": ["node", "jest", "@testing-library/jest-dom", "@types/babel__generator", "@types/babel__template", "@types/babel__traverse"]
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json" ],
   "exclude": ["node_modules"]
 }

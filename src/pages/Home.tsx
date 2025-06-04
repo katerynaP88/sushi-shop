@@ -5,12 +5,12 @@ import { useCart } from "../context/CartContext";
 import { useSearch } from "../hooks/useSearch";
 import { type SushiItem } from "../types/cartTypes";
 import { useFetch } from "../hooks/useFetch";
-import { Box, Typography, Container, TextField, IconButton, Grid, Button, Paper } from '@mui/material';
+import { Box, Typography, Container, TextField, Grid, IconButton, Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Stack } from "@mui/material";
 import { Card, CardMedia, CardContent, CardActions } from "@mui/material";
-import TextDecreaseTwoTone from "@mui/icons-material/TextDecreaseTwoTone";
+
 
 
 
@@ -44,70 +44,70 @@ const Home = () => {
     return (
         <div className="p-4">
             <Box
-  sx={{
-    height: 250,
-    backgroundImage: `url("https://img.freepik.com/free-photo/highly-detailed-seafood-sushi-dish-with-simple-black-background_23-2151349378.jpg?ga=GA1.1.249952370.1748535845&semt=ais_hybrid&w=740")`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    textAlign: 'center',
-    px: 2,
-  }}
->
-  <Typography variant="h4" fontWeight="bold">
-    Discover Our Sushi
-  </Typography>
-  <Typography variant="body1" mt={1}>
-    Discover the freshest and most delicious sushi dishes made just for you.
-  </Typography>
-</Box>
-            <Container maxWidth="sm" sx={{ mt: 4, display: 'flex', alignItems: 'center' }}>
-  <IconButton onClick={() => document.querySelector('input')?.focus()}>
-    <SearchIcon />
-  </IconButton>
-  <TextField
-    fullWidth
-    placeholder="Search for sushi..."
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    variant="outlined"
-    size="small"
-    sx={{ mx: 1 }}
-  />
-  <IconButton onClick={() => setShowCart(true)}>
-    <ShoppingCartIcon />
-  </IconButton>
-</Container>         
-            <Stack
-                direction="row"
-                spacing={1}
-                justifyContent="center"
-                flexWrap="wrap"
-                mt={2}
+                sx={{
+                    height: 250,
+                    backgroundImage: `url("https://img.freepik.com/free-photo/highly-detailed-seafood-sushi-dish-with-simple-black-background_23-2151349378.jpg?ga=GA1.1.249952370.1748535845&semt=ais_hybrid&w=740")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    textAlign: 'center',
+                    px: 2,
+                }}
             >
-                {categories.map((category) => (
-                    <Button
-                        key={category}
-                        variant={selectedCategory === category ? "contained" : "outlined"}
-                        color={selectedCategory === category ? "warning" : "inherit"}
-                        onClick={() => setSelectedCategory(category)}
+                <Typography variant="h4" fontWeight="bold">
+                    Discover Our Sushi
+                </Typography>
+                <Typography variant="body1" mt={1}>
+                    Discover the freshest and most delicious sushi dishes made just for you.
+                </Typography>
+                </Box>
+                    <Container maxWidth="sm" sx={{ mt: 4, display: 'flex', alignItems: 'center' }}>
+                        <IconButton onClick={() => document.querySelector('input')?.focus()}>
+                            <SearchIcon />
+                        </IconButton>
+                        <TextField
+                            fullWidth
+                            placeholder="Search for sushi..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            variant="outlined"
+                            size="small"
+                            sx={{ mx: 1 }}
+                        />
+                        <IconButton onClick={() => setShowCart(true)}>
+                            <ShoppingCartIcon />
+                        </IconButton>
+                    </Container>
+                    <Stack
+                        direction="row"
+                        spacing={1}
+                        justifyContent="center"
+                        flexWrap="wrap"
+                        mt={2}
                     >
-                        {category}
-                    </Button>
-                ))}
-            </Stack>
-            <Grid container spacing={2} mt={2} alignItems="stretch">
-                {filteredItems.map((meal: SushiItem) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} key={meal.id} sx={{ height: '100% '}}>
-                        <Link to={`/product/${meal.id}`} style={{ textDecoration: "none" }}>
-                            <Card 
-                              onMouseEnter={() => setHoveredId(meal.id)}
-                              onMouseLeave={() => setHoveredId(null)}
-                              sx={{
+                        {categories.map((category) => (
+                            <Button
+                                key={category}
+                                variant={selectedCategory === category ? "contained" : "outlined"}
+                                color={selectedCategory === category ? "warning" : "inherit"}
+                                onClick={() => setSelectedCategory(category)}
+                            >
+                                {category}
+                            </Button>
+                        ))}
+                    </Stack>
+                    <Grid container spacing={2} mt={2} alignItems="stretch">
+                        {filteredItems.map((meal: SushiItem) => (
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={meal.id} sx={{ height: '100% '}}>
+                                <Link to={`/product/${meal.id}`} style={{ textDecoration: "none" }}>
+                                <Card 
+                                onMouseEnter={() => setHoveredId(meal.id)}
+                                onMouseLeave={() => setHoveredId(null)}
+                                sx={{
                                 height: "100%",
                                 display: "flex",
                                 flexDirection: "column",
@@ -119,7 +119,7 @@ const Home = () => {
                                         borderColor: "#ff9800",
                                     },
                                     width: "100%",
-                              }}
+                                }}
                             >
                                 <CardMedia
                                 component="img"
@@ -136,8 +136,7 @@ const Home = () => {
                                     </Typography>
                                 </CardContent>
                                 {hoveredId === meal.id && (
-                                    <CardActions sx={{ flexDirection: "column", alignItems: "center", padding: "8px",
-                minHeight: "80px" }}>
+                                    <CardActions sx={{ flexDirection: "column", alignItems: "center", padding: "8px", minHeight: "80px" }}>
                                         <Button variant="contained" color="inherit" size="small"
                                             onClick={(e) => {
                                             e.preventDefault();

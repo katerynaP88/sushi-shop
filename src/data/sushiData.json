@@ -11,7 +11,7 @@
         "calories": 220,
         "protein": "12g",
         "fat": "4g",
-        "carbs": "28g"}         
+        "carbohydrates": "28g"}         
     },
     {
        "id": 2,
@@ -25,7 +25,7 @@
             "calories": 220,
             "protein": "12g",
             "fat": "4g",
-            "carbs": "28g"
+            "carbohydrates": "28g"
         }
     },
     {
@@ -40,7 +40,7 @@
             "calories": 250,
             "protein": "14g",
             "fat": "3g",
-            "carbs": "35g"
+            "carbohydrates": "35g"
         }
     },
     {
@@ -55,7 +55,7 @@
             "calories": 200,
             "protein": "2g",
             "fat": "4g",
-            "carbs": "38g"
+            "carbohydrates": "38g"
         }
     },
      {
@@ -70,7 +70,7 @@
             "calories": 180,
             "protein": "3g",
             "fat": "6g",
-            "carbs": "28g"
+            "carbohydrates": "28g"
         }
     },
     {
@@ -85,7 +85,7 @@
             "calories": 190,
             "protein": "10g",
             "fat": "2g",
-            "carbs": "26g"
+            "carbohydrates": "26g"
         }
     },
     {
@@ -100,7 +100,7 @@
             "calories": 200,
             "protein": "6g",
             "fat": "5g",
-            "carbs": "30g"
+            "carbohydrates": "30g"
         }
     },
     {
@@ -115,7 +115,7 @@
             "calories": 260,
             "protein": "12g",
             "fat": "8g",
-            "carbs": "32g"
+            "carbohydrates": "32g"
         }
     },
     {
@@ -130,7 +130,7 @@
             "calories": 170,
             "protein": "4g",
             "fat": "3g",
-            "carbs": "30g"
+            "carbohydrates": "30g"
         }
     },
     {
@@ -145,7 +145,7 @@
             "calories": 230,
             "protein": "13g",
             "fat": "5g",
-            "carbs": "28g"
+            "carbohydrates": "28g"
         }
     },
     {
@@ -160,7 +160,7 @@
             "calories": 210,
             "protein": "8g",
             "fat": "6g",
-            "carbs": "27g"
+            "carbohydrates": "27g"
         }
     },
     {
@@ -175,7 +175,7 @@
             "calories": 240,
             "protein": "6g",
             "fat": "7g",
-            "carbs": "36g"
+            "carbohydrates": "36g"
         }
     },
     {
@@ -190,7 +190,7 @@
             "calories": 270,
             "protein": "12g",
             "fat": "8g",
-            "carbs": "34g"
+            "carbohydrates": "34g"
         }
     },
     {
@@ -205,7 +205,7 @@
             "calories": 280,
             "protein": "10g",
             "fat": "10g",
-            "carbs": "35g"
+            "carbohydrates": "35g"
         }
     },
     {
@@ -220,7 +220,7 @@
             "calories": 300,
             "protein": "8g",
             "fat": "12g",
-            "carbs": "38g"
+            "carbohydrates": "38g"
         }
     },
     {
@@ -235,7 +235,7 @@
             "calories": 150,
             "protein": "2g",
             "fat": "1g",
-            "carbs": "30g"
+            "carbohydrates": "30g"
         }
     },
     {
@@ -250,7 +250,7 @@
             "calories": 320,
             "protein": "9g",
             "fat": "14g",
-            "carbs": "40g"
+            "carbohydrates": "40g"
         }
     },
     {
@@ -265,7 +265,7 @@
             "calories": 60,
             "protein": "3g",
             "fat": "1g",
-            "carbs": "8g"
+            "carbohydrates": "8g"
         }
     },
     {
@@ -280,7 +280,7 @@
             "calories": 70,
             "protein": "4g",
             "fat": "2g",
-            "carbs": "9g"            
+            "carbohydrates": "9g"            
         }
     },
     {
@@ -295,7 +295,7 @@
             "calories": 90,
             "protein": "6g",
             "fat": "3g",
-            "carbs": "10g"
+            "carbohydrates": "10g"
         }
     },
     {
@@ -310,7 +310,7 @@
             "calories": 200,
             "protein": "6g",
             "fat": "2g",
-            "carbs": "35g"
+            "carbohydrates": "35g"
         }
     },
     {
@@ -325,7 +325,7 @@
             "calories": 100,
             "protein": "5g",
             "fat": "3g",
-            "carbs": "12g"
+            "carbohydrates": "12g"
         }
     },
     {
@@ -340,7 +340,7 @@
             "calories": 150,
             "protein": "8g",
             "fat": "6g",
-            "carbs": "15g"
+            "carbohydrates": "15g"
         }
     },
     {
@@ -355,7 +355,7 @@
             "calories": 220,
             "protein": "3g",
             "fat": "5g",
-            "carbs": "40g"
+            "carbohydrates": "40g"
         }
     },
     {
@@ -370,7 +370,7 @@
             "calories": 250,
             "protein": "5g",
             "fat": "4g",
-            "carbs": "45g"
+            "carbohydrates": "45g"
         }
     },
     {
@@ -385,7 +385,7 @@
             "calories": 280,
             "protein": "4g",
             "fat": "12g",
-            "carbs": "35g"
+            "carbohydrates": "35g"
         }
     },
     {
@@ -400,7 +400,7 @@
             "calories": 230,
             "protein": "3g",
             "fat": "5g",
-            "carbs": "42g"
+            "carbohydrates": "42g"
         }
     },
     {
@@ -415,7 +415,7 @@
             "calories": 260,
             "protein": "6g",
             "fat": "5g",
-            "carbs": "45g"
+            "carbohydrates": "45g"
         }
     },
     {
@@ -430,7 +430,7 @@
             "calories": 300,
             "protein": "6g",
             "fat": "15g",
-            "carbs": "35g"
+            "carbohydrates": "35g"
         }
     }  
     ]
