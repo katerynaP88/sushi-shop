@@ -1,24 +1,15 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "../context/CartContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { Select, MenuItem, InputLabel, FormControl, Box, Typography, Button, TextField, Grid, Paper, List, ListItem, ListItemText, Divider } from "@mui/material";
+import { Select, MenuItem, InputLabel, FormControl, Box, Typography, Button, TextField, Grid, Paper} from "@mui/material";
 import OrderSummary from "../components/OrderSummary";
 import { Link } from "react-router-dom";
 
 
 const Checkout = () => {
-    // const [tab, setTab] = useState(0);
     const { cart, clearCart } = useCart(); 
     const { register, handleSubmit, formState: { errors }, } = useForm(); 
-    // const { register, handleSubmit } = useForm();
-    
-    
-    // const handleCheckout = () => {
-    //     alert("Thank you for your order! Your sushi is on the way! 🍣");
-    //     clearCart();    
-    // };
-
+   
     const onSubmit = (data: any) => {
      console.log("Order Data:", data);
      alert("Thank you for your order! Your sushi is on the way! 🍣");
@@ -119,48 +110,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-//                     {/* <Tabs value={tab} onChange={(e, newValue) => setTab(newValue)} textColor="inherit" indicatorColor="primary">
-//                         <Tab label="New Customer" />
-//                         <Tab label="Registered Customer" />
-//                     </Tabs>
-//                     {tab === 0 && (
-//                         <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 2 }}>
-//                             <TextField fullWidth label="Name" {...register('name')} margin="normal" />
-//                             <TextField fullWidth label="Address" {...register('address')} margin="normal" />
-//                             <TextField fullWidth label="Phone" {...register('phone')} margin="normal" />
-//                             <TextField fullWidth label="Email" {...register('email')} margin="normal" />
-//                             <TextField fullWidth label="Payment Method" {...register('payment')} margin="normal" />
-//                                 <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-//                                     Submit Order
-//                                 </Button>
-//                         </Box>
-//                     )}
-//                 </Grid>
-//                 <Grid item xs={12} md={6}>
-//                     <Paper sx={{ p: 2, backgroundColor: 'white', color: 'black' }}>
-//                         <Typography variant="h6" gutterBottom>
-//                             Order Summary
-//                         </Typography>
-//                         <Divider />
-//                         <List>
-//                             {cart.items.map((item, index) => (
-//                               <ListItem key={index}>
-//                                 <ListItemText
-//                                     primary={item.name}
-//                                     secondary={`Quantity: ${item.quantity} | Price: €${item.price}`}
-//                                 />
-//                               </ListItem>
-//                             ))}   
-//                         </List>
-//                         <Divider />
-//                         <Typography variant="h6" sx={{ mt: 2 }}>
-//                             Total: €{cart.items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
-//                         </Typography>
-//                     </Paper>
-//                 </Grid> */}
-//             {/* </Grid>
-//         </Box>
-//     );
-// };
-
